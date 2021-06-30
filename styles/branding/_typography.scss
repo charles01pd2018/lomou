@@ -1,0 +1,59 @@
+/*--------------------------------------------------------------
+# Font Family
+--------------------------------------------------------------*/
+@font-face {
+    font-family: "Telex-Regular";
+    src: url("/static/fonts/telex/Telex-Regular.ttf");
+    font-style: normal;
+    font-display: swap;
+}
+  
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+$font-scale--tablet:                0.95;
+$font-scale--mobile:                0.9;
+
+$font-sizing-map: (
+    "h1":               3em,
+    "h2":               2.4em,
+    "h3":               1.8em,
+    "h4":               1.4em,
+    "p":                1.2em,
+    "p.text-sm":        1em,
+    "p.text-xs":        0.8em
+);
+
+/*--------------------------------------------------------------
+# Styling
+--------------------------------------------------------------*/
+@each $font-type, $font-size in $font-sizing-map {
+    #{$font-type} {
+        font-size: $font-size;
+    }
+}
+
+/* BREAKPOINT LARGE */
+@media(max-width: $breakpoint--large) {
+    @each $font-type, $font-size in $font-sizing-map {
+        #{$font-type} {
+            font-size: $font-size * $font-scale--tablet;
+        }
+    }
+}
+
+/* BREAKPOINT MEDIUM */
+@media(max-width: $breakpoint--medium) {
+    @each $font-type, $font-size in $font-sizing-map {
+        #{$font-type} {
+            font-size: $font-size * $font-scale--mobile;
+        }
+    }
+}
+
+/*--------------------------------------------------------------
+# Helper
+--------------------------------------------------------------*/
+.weak-heading {
+    font-weight: normal;
+}

@@ -1,0 +1,1 @@
+Next.js Starting Project Template
