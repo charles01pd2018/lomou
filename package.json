@@ -1,8 +1,7 @@
 {
-  "name": "nextjs-starting-template",
-  "description": "This is going to be the greatest app ever!!!",
+  "name": "lomou",
+  "description": "Ecommerce",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",

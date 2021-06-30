@@ -1,1 +1,1 @@
-Next.js Starting Project Template
+Ecommerce
