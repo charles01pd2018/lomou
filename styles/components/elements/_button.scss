@@ -1,0 +1,42 @@
+/*--------------------------------------------------------------
+# Variables
+--------------------------------------------------------------*/
+$button-lg--padding:                1.65rem;
+$button-md--padding:                1.2rem;
+$button-sm--padding:                1rem;
+
+$button--border-radius:             5px;
+
+/*--------------------------------------------------------------
+# Styling
+--------------------------------------------------------------*/
+.button-wrapper {
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-3%);
+    }
+}
+
+.link-button-wrapper {
+    border-radius: $button--border-radius;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-3%);
+    }
+}
+
+.button-lg {
+    padding: ( $button-lg--padding / 2 ) $button-lg--padding;
+}
+
+.button-md {
+    padding: ( $button-md--padding / 2 ) $button-md--padding;
+}
+
+.button-sm {
+    padding: ( $button-sm--padding / 2 ) $button-sm--padding;
+}

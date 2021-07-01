@@ -1,35 +1,40 @@
 // dependencies
 import Head from 'next/head';
-
-// layout
-import { DefaultLayout } from '../layout';
+// components
+import { ViewPanel } from '../components';
+// components / layout
+import { ScrollViewLayout } from '../layout';
 
 const Home = ({
   content: {
     pageTitle,
+    scrollViewLayoutContent,
   }
 }) => {
   return (
-    <DefaultLayout>
-      <div className="container">
-        <Head>
-            <title>{pageTitle}</title>
-        </Head>
-
-        <h1>
-          Why is this not working
-        </h1>
-        fdasjkhf
-
-        <img className='logo-placeholder' src="/favicon.svg" alt='site-logo' />
-      </div>
-    </DefaultLayout>
+    <>
+      <Head>
+          <title>{pageTitle}</title>
+      </Head>
+      <ScrollViewLayout content={scrollViewLayoutContent} >
+        <ViewPanel id='' />
+      </ScrollViewLayout>
+    </>
   );
 }
 
 /* STATIC CONTENT */
 const HomeContent = {
   pageTitle: 'lomou',
+  scrollViewLayoutContent: {
+    sidebarContent: {
+      buttonList: [
+        {
+          text: 'CTA',
+        }
+      ]
+    }
+  }
 }
 
 export function getStaticProps() {

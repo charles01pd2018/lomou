@@ -1,5 +1,5 @@
-import DefaultLayout from './default-layout';
+import ScrollViewLayout from './scroll-view-layout';
 
 export {
-    DefaultLayout,
+    ScrollViewLayout,
 }

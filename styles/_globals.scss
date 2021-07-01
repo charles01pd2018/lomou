@@ -4,12 +4,16 @@
 html,
 body {
   margin: 0;
-  font-family: Verdana; 
+  font-family: Telex; 
   scroll-behavior: smooth;
 }
 
 main.site-content {
   text-align: center;
+}
+
+section {
+  height: 100vh;
 }
 
 /*--------------------------------------------------------------
