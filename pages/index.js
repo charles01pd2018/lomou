@@ -27,13 +27,20 @@ const Home = ({
 const HomeContent = {
   pageTitle: 'lomou',
   scrollViewLayoutContent: {
+    headerContent: {
+      buttonList: [
+        {
+          text: 'CTA',
+        }
+      ],
+    },
     sidebarContent: {
       buttonList: [
         {
           text: 'CTA',
         }
       ]
-    }
+    },
   }
 }
 
