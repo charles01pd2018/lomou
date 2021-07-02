@@ -18,7 +18,7 @@ const Header = ( {
                             const { text } =  buttonContent;
 
                             return (
-                                <Button key={text} className={`header-button--${text} button-lg`} 
+                                <Button key={text} className={`header-button--${text} header-button button-lg`} 
                                     content={buttonContent} />
                             );
                         } )

@@ -28,9 +28,15 @@
 /*--------------------------------------------------------------
 # Components / Layout
 --------------------------------------------------------------*/
-@import './components/layout/header', './components/layout/sidebar';
+@import './components/layout/header', './components/layout/sidebar',
+    './components//layout/footer';
 
 /*--------------------------------------------------------------
 # Components / Elements
 --------------------------------------------------------------*/
 @import './components/elements/button';
+
+/*--------------------------------------------------------------
+# Layout
+--------------------------------------------------------------*/
+@import './layout/scrollViewLayout';

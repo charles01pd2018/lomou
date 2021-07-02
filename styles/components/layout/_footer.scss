@@ -1,0 +1,11 @@
+.footer-container {
+    .footer-wrapper {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+
+        .footer-text-logo {
+            border: 5px solid red;
+        }
+    }
+}

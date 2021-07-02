@@ -7,26 +7,17 @@ $button-sm--padding:                1rem;
 
 $button--border-radius:             5px;
 
+$button--animation-duration:        0.4s;
+
 /*--------------------------------------------------------------
 # Styling
 --------------------------------------------------------------*/
 .button-wrapper {
-
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: translateY(-3%);
-    }
+    transition: background-color $button--animation-duration ease;
 }
 
 .link-button-wrapper {
-    border-radius: $button--border-radius;
-
-    transition: transform 0.3s ease;
-
-    &:hover {
-        transform: translateY(-3%);
-    }
+    transition: background-color $button--animation-duration ease;
 }
 
 .button-lg {

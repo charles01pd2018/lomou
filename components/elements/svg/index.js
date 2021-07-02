@@ -3,16 +3,18 @@ const SVG = ( {
     className,
     data,
     alt,
+    width,
+    height,
     type='image/svg+xml',
-    role='presentation',
 } ) => {
 
     return (
         <object className={className}
             data={data}
             alt={alt}
-            type={type}
-            role={role} >
+            width={width}
+            height={height}
+            type={type} >
             {alt}
         </object>
     );

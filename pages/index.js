@@ -5,12 +5,13 @@ import { ViewPanel } from '../components';
 // components / layout
 import { ScrollViewLayout } from '../layout';
 
-const Home = ({
+
+const Home = ( {
   content: {
     pageTitle,
     scrollViewLayoutContent,
   }
-}) => {
+} ) => {
   return (
     <>
       <Head>
@@ -23,6 +24,7 @@ const Home = ({
   );
 }
 
+
 /* STATIC CONTENT */
 const HomeContent = {
   pageTitle: 'lomou',
@@ -30,15 +32,29 @@ const HomeContent = {
     headerContent: {
       buttonList: [
         {
-          text: 'CTA',
+          text: 'Shop',
+        },
+        {
+          text: 'Explore'
         }
       ],
     },
     sidebarContent: {
       buttonList: [
         {
-          text: 'CTA',
-        }
+          text: 'Superior Wireless Charging',
+          icon: {
+            path: 'static/icons/wireless-charging.svg',
+            alt: 'Wireless Charging',
+          }
+        },
+        {
+          text: 'Superior Wireless Charging',
+          icon: {
+            path: 'static/icons/wireless-charging.svg',
+            alt: 'Wireless Charging',
+          }
+        },
       ]
     },
   }

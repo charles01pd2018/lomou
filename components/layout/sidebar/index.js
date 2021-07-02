@@ -1,5 +1,5 @@
-
-import { Button } from '../../elements';
+// elements
+import { IconButton, SVG } from '../../elements';
 
 const Sidebar = ( { 
     id,
@@ -11,16 +11,25 @@ const Sidebar = ( {
     return (
         <aside id={id} className='sidebar-container'>
             <div className='sidebar-wrapper'>
-                <div className='sidebar-buttons-wrapper'>
+                <nav className='sidebar-nav-wrapper'>
                     {
-                        buttonList.map( ( buttonContent ) => {
+                        buttonList.map( ( { text, icon } ) => {
+                            /* CONTENT */
+                            const { path, alt } = icon;
+
                             return (
-                                <Button className={`sidebar-button--${buttonContent.text} button-lg`} 
-                                    content={buttonContent} />
+                                <IconButton key={alt} className='sidebar-icon-button'>
+                                    {text}
+                                    <SVG className='sidebar-icon' 
+                                        data={path} 
+                                        alt={alt}
+                                        width='70'
+                                        height='70' />
+                                </IconButton>
                             );
                         } )
                     }
-                </div>
+                </nav>
             </div>
         </aside>
     );

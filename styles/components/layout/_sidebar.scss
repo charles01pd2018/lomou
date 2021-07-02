@@ -1,11 +1,26 @@
 .sidebar-container {
     .sidebar-wrapper {
+        position: fixed;
+        right: 2rem;
+        height: 75%;
 
-        .sidebar-buttons-wrapper {
+        border: 5px solid orange;
 
-            .sidebar-button--CTA {
-                border: 5px solid $brand-blue-3;
-                background-color: $brand-blue-1;
+        .sidebar-nav-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: space-around;
+
+            border: 5px solid green;
+
+            .sidebar-icon-button {
+
+                border: 5px solid yellow;
+
+                .sidebar-icon {
+                    border: 5px solid red;
+                }
             }
         }
     }
