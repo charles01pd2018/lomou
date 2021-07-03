@@ -14,7 +14,9 @@ const ScrollViewLayout = ( {
         <div className='scroll-view-container'>
             <Header id='main-header' content={headerContent} />
             <Sidebar id='main-sidebar' content={sidebarContent} />
-            <main className='site-content'>{children}</main>
+            <div className='container'>
+                <main className='site-content'>{children}</main>
+            </div>
             <Footer id='main-footer' />
         </div>
     );

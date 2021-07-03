@@ -1,0 +1,16 @@
+.view-panel-container {
+    .view-panel-wrapper {
+        display: flex;
+
+        .view-panel-text-wrapper {
+            width: 55%;
+            border: 5px solid red;
+        }
+
+        .view-panel-image-wrapper {
+            margin-top: 8rem;
+
+            border: 5px solid orange;
+        }
+    }
+}

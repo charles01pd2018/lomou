@@ -10,15 +10,29 @@ const Home = ( {
   content: {
     pageTitle,
     scrollViewLayoutContent,
+    viewPanelContent,
   }
 } ) => {
+
+  /* CONTENT */
+  const { panelList } = viewPanelContent;
+
   return (
     <>
       <Head>
           <title>{pageTitle}</title>
       </Head>
       <ScrollViewLayout content={scrollViewLayoutContent} >
-        <ViewPanel id='' />
+        {
+          panelList.map( ( panelItems, index ) => {
+            /* CONTENT */
+            const { _id, ...panelContent } = panelItems;
+
+            return (
+              <ViewPanel id={`view-panel-${index}`} key={_id} content={panelContent} />
+            );
+          } )
+        }
       </ScrollViewLayout>
     </>
   );
@@ -44,20 +58,29 @@ const HomeContent = {
         {
           text: 'Superior Wireless Charging',
           icon: {
-            path: 'static/icons/wireless-charging.svg',
+            path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
           }
         },
         {
           text: 'Superior Wireless Charging',
           icon: {
-            path: 'static/icons/wireless-charging.svg',
+            path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
           }
         },
       ]
     },
-  }
+  },
+  viewPanelContent: {
+    panelList: [
+      {
+        _id: 'Best Technology',
+        headerText: 'The Best Technology There Is',
+        descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
+      }
+    ],
+  },
 }
 
 export function getStaticProps() {
