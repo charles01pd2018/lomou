@@ -3,6 +3,12 @@
 
     &.view-panel-active {
         display: block;
+
+        animation: leave-up ease 0.5s;
+    }
+
+    &.view-panel-exit {
+        
     }
 
     .view-panel-wrapper {
@@ -18,5 +24,17 @@
 
             border: 5px solid orange;
         }
+    }
+}
+
+@keyframes leave-up {
+    from {
+        transform: translate( -50px, -50px );
+    }
+}
+
+@keyframes enter-up {
+    from {
+        transform: translate( -50px, -50px );
     }
 }
