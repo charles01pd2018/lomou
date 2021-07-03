@@ -4,7 +4,7 @@
         right: 2rem;
         height: 75%;
 
-        border: 5px solid orange;
+        border: 5px solid gray;
 
         .sidebar-nav-wrapper {
             display: flex;
@@ -12,14 +12,14 @@
             height: 100%;
             justify-content: space-around;
 
-            border: 5px solid green;
-
             .sidebar-icon-button {
 
-                border: 5px solid yellow;
+                border: 5px solid black;
 
                 .sidebar-icon {
-                    border: 5px solid red;
+                    &.sidebar-icon-active {
+                        border: 5px solid yellow;
+                    }
                 }
             }
         }

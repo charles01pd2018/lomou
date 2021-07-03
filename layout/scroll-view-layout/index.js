@@ -8,12 +8,14 @@ const ScrollViewLayout = ( {
         headerContent,
         sidebarContent,
     },
+    pageState,
+    setPageState,
 } ) => {
 
     return (
         <div className='scroll-view-container'>
             <Header id='main-header' content={headerContent} />
-            <Sidebar id='main-sidebar' content={sidebarContent} />
+            <Sidebar id='main-sidebar' content={sidebarContent} pageState={pageState} setPageState={setPageState} />
             <div className='container'>
                 <main className='site-content'>{children}</main>
             </div>

@@ -27,7 +27,7 @@ const Home = ( {
       <Head>
           <title>{pageTitle}</title>
       </Head>
-      <ScrollViewLayout content={scrollViewLayoutContent} >
+      <ScrollViewLayout content={scrollViewLayoutContent} pageState={activeViewPanel} setPageState={setActiveViewPanel}>
         {
           panelList.map( ( panelItems, index ) => {
             /* CONTENT */
