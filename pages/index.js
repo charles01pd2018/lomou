@@ -1,5 +1,7 @@
 // dependencies
 import Head from 'next/head';
+import { useState } from 'react';
+import classNames from 'classnames';
 // components
 import { ViewPanel } from '../components';
 // components / layout
@@ -14,6 +16,9 @@ const Home = ( {
   }
 } ) => {
 
+  /* HOOKS */
+  const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
+
   /* CONTENT */
   const { panelList } = viewPanelContent;
 
@@ -27,9 +32,13 @@ const Home = ( {
           panelList.map( ( panelItems, index ) => {
             /* CONTENT */
             const { _id, ...panelContent } = panelItems;
+            /* CLASSNAMES */
+            const viewPanelClasses = classNames( activeViewPanel === index && 'view-panel-active' );
 
             return (
-              <ViewPanel id={`view-panel-${index}`} key={_id} content={panelContent} />
+              <ViewPanel id={`view-panel-${index}`} key={_id} 
+                className={viewPanelClasses}
+                content={panelContent} />
             );
           } )
         }
@@ -76,9 +85,26 @@ const HomeContent = {
     panelList: [
       {
         _id: 'Best Technology',
-        headerText: 'The Best Technology There Is',
-        descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
-      }
+        text: {
+          headerText: 'The Best Technology There Is',
+          descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
+        },
+        image: {
+          path: '/static/images/product--glass-wireless-charger.jpg',
+          alt: 'Wireless Charging JPG',
+        }
+      },
+      {
+        _id: 'Best Service',
+        text: {
+          headerText: 'The Best Service Ever',
+          descriptionText: 'We provide the best service in the whole wide world. no cap. no lies. har har har.',
+        },
+        image: {
+          path: '/static/images/product--glass-wireless-charger.jpg',
+          alt: 'Wireless Charging JPG',
+        }
+      },
     ],
   },
 }

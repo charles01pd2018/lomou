@@ -1,19 +1,26 @@
 // elements
 import Image from 'next/image';
-// images
-// import glass from '../../public/static/images/product--glass-wireless-charger.jpg'
+import classNames from 'classnames';
 
 
 const ViewPanel = ( { 
     id,
+    className,
     content: {
-        headerText,
-        descriptionText,
+        text,
+        image,
     },
 } ) => {
 
+    /* CLASSNAMES */
+    const viewPanelContainerClasses = classNames( 'view-panel-container', className );
+
+    /* CONTENT */
+    const { headerText, descriptionText } = text;
+    const { path, alt } = image;
+
     return (
-        <section id={id} className='view-panel-container'>
+        <section id={id} className={viewPanelContainerClasses}>
             <div className='view-panel-wrapper'>
                 <div className='view-panel-text-wrapper'>
                     <h1 className='view-panel-header'>{headerText}</h1>
@@ -21,7 +28,7 @@ const ViewPanel = ( {
                 </div>
                 
                 <div className='view-panel-image-wrapper'>
-                    <Image src='/static/images/product--glass-wireless-charger.jpg' alt='fdsaf'
+                    <Image src={path} alt={alt}
                         width='300'
                         height='300' />
                 </div>

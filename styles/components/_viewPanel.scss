@@ -1,4 +1,10 @@
 .view-panel-container {
+    display: none;
+
+    &.view-panel-active {
+        display: block;
+    }
+
     .view-panel-wrapper {
         display: flex;
 
