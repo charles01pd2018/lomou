@@ -1,7 +1,17 @@
 .scroll-view-container {
     background-image: url( /blob.svg );
     background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-color: $brand-blue-1;
+    
     height: 100vh;
-    max-height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+
+    .snap-scroll {
+        height: 100vh;
+        padding-top: 9rem;
+        scroll-snap-align: start;
+    }
 }

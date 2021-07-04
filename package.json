@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@n8tb1t/use-scroll-position": "^2.0.3",
     "classnames": "^2.3.1",
     "next": "10.0.8",
     "node-sass": "^5.0.0",

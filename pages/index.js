@@ -1,6 +1,6 @@
 // dependencies
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import classNames from 'classnames';
 // components
 import { ViewPanel } from '../components';
@@ -16,29 +16,35 @@ const Home = ( {
   }
 } ) => {
 
-  /* HOOKS */
-  const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
-
   /* CONTENT */
   const { panelList } = viewPanelContent;
+
+  /* HOOKS */
+  const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
+  const numViewPanels = useRef( panelList.length );
 
   return (
     <>
       <Head>
           <title>{pageTitle}</title>
       </Head>
-      <ScrollViewLayout content={scrollViewLayoutContent} pageState={activeViewPanel} setPageState={setActiveViewPanel}>
+      <ScrollViewLayout content={scrollViewLayoutContent} 
+        pageState={activeViewPanel} 
+        setPageState={setActiveViewPanel}>
         {
           panelList.map( ( panelItems, index ) => {
             /* CONTENT */
             const { _id, ...panelContent } = panelItems;
             /* CLASSNAMES */
-            const viewPanelClasses = classNames( activeViewPanel === index && 'view-panel-active' );
+            const viewPanelClasses = classNames( 'snap-scroll', activeViewPanel === index && 'view-panel-active' );
 
             return (
               <ViewPanel id={`view-panel-${index}`} key={_id} 
                 className={viewPanelClasses}
-                content={panelContent} />
+                content={panelContent} 
+                pageState={activeViewPanel}
+                setPageState={setActiveViewPanel}
+                numPageStates={numViewPanels.current} />
             );
           } )
         }
