@@ -1,4 +1,5 @@
 // dependencies
+import Link from 'next/link';
 import classNames from 'classnames';
 // elements
 import { IconButton, SVG } from '../../elements';
@@ -23,7 +24,7 @@ const Sidebar = ( {
             <div className='sidebar-wrapper'>
                 <nav className='sidebar-nav-wrapper'>
                     {
-                        buttonList.map( ( { text, icon }, index ) => {
+                        buttonList.map( ( { _id, text, icon }, index ) => {
                             /* CONTENT */
                             const { path, alt } = icon;
                             /* CLASSNAMES */
@@ -33,14 +34,18 @@ const Sidebar = ( {
                                 pageState === index && 'sidebar-icon-active');
 
                             return (
-                                <IconButton key={alt} className={iconButtonClasses} onClick={() => changePageState( index )}>
-                                    {text}
-                                    <SVG className={iconClasses} 
-                                        data={path} 
-                                        alt={alt}
-                                        width='70'
-                                        height='70' />
-                                </IconButton>
+                                <Link href={_id}>
+                                    <a>
+                                        <IconButton key={alt} className={iconButtonClasses} onClick={() => changePageState( index )}>
+                                            {text}
+                                            <SVG className={iconClasses}
+                                                data={path}
+                                                alt={alt}
+                                                width='70'
+                                                height='70' />
+                                        </IconButton>
+                                    </a>
+                                </Link>
                             );
                         } )
                     }

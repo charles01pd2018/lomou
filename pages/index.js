@@ -1,7 +1,7 @@
 // dependencies
 import Head from 'next/head';
-import { useState, useRef } from 'react';
-import classNames from 'classnames';
+import { useState } from 'react';
+import VisibilitySensor from 'react-visibility-sensor';
 // components
 import { ViewPanel } from '../components';
 // components / layout
@@ -15,13 +15,22 @@ const Home = ( {
     viewPanelContent,
   }
 } ) => {
+  
+  /* HOOKS */
+  const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
+
+  /* FUNCTIONS */
+  const handleSidebarClick = ( event ) => {
+
+  }
+
+  const handleViewPanelVisible = ( isVisible, viewPanelIndex ) => {
+    if ( isVisible ) setActiveViewPanel( viewPanelIndex );
+  }
 
   /* CONTENT */
   const { panelList } = viewPanelContent;
 
-  /* HOOKS */
-  const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
-  const numViewPanels = useRef( panelList.length );
 
   return (
     <>
@@ -35,16 +44,18 @@ const Home = ( {
           panelList.map( ( panelItems, index ) => {
             /* CONTENT */
             const { _id, ...panelContent } = panelItems;
-            /* CLASSNAMES */
-            const viewPanelClasses = classNames( 'snap-scroll', activeViewPanel === index && 'view-panel-active' );
 
             return (
-              <ViewPanel id={`view-panel-${index}`} key={_id} 
-                className={viewPanelClasses}
-                content={panelContent} 
-                pageState={activeViewPanel}
-                setPageState={setActiveViewPanel}
-                numPageStates={numViewPanels.current} />
+              <VisibilitySensor 
+                onChange={( isVisible ) => handleViewPanelVisible( isVisible, index )}
+                minTopValue='10'
+                scrollCheck={true}
+                intervalDelay={10}>
+                <ViewPanel id={`view-panel-`} key={_id}
+                  className='snap-scroll'
+                  content={panelContent}
+                  sectionNumber={index} />
+              </VisibilitySensor>
             );
           } )
         }
@@ -71,6 +82,7 @@ const HomeContent = {
     sidebarContent: {
       buttonList: [
         {
+          _id: '#view-panel-0',
           text: 'Superior Wireless Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
@@ -78,6 +90,15 @@ const HomeContent = {
           }
         },
         {
+          _id: '#view-panel-1',
+          text: 'Superior Wireless Charging',
+          icon: {
+            path: '/static/icons/wireless-charging.svg',
+            alt: 'Wireless Charging',
+          }
+        },
+        {
+          _id: '#view-panel-2',
           text: 'Superior Wireless Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
@@ -105,6 +126,17 @@ const HomeContent = {
         text: {
           headerText: 'The Best Service Ever',
           descriptionText: 'We provide the best service in the whole wide world. no cap. no lies. har har har.',
+        },
+        image: {
+          path: '/static/images/product--glass-wireless-charger.jpg',
+          alt: 'Wireless Charging JPG',
+        }
+      },
+      {
+        _id: 'Best Jawnz',
+        text: {
+          headerText: 'The Best Jawnz Ever',
+          descriptionText: 'jawn jawn jawn',
         },
         image: {
           path: '/static/images/product--glass-wireless-charger.jpg',

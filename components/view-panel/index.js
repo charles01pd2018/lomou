@@ -1,6 +1,5 @@
 // dependencies
 import { useRef } from 'react';
-import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 // elements
 import Image from 'next/image';
 import classNames from 'classnames';
@@ -13,13 +12,11 @@ const ViewPanel = ( {
         text,
         image,
     },
-    pageState,
-    setPageState,
-    numPageStates,
+    sectionNumber,
 } ) => {
 
     /* HOOKS */
-    const viewPanelRef = useRef( 0 );
+    const viewPanelRef = useRef( sectionNumber );;
 
     /* CLASSNAMES */
     const viewPanelContainerClasses = classNames( 'view-panel-container', className );
@@ -27,20 +24,6 @@ const ViewPanel = ( {
     /* CONTENT */
     const { headerText, descriptionText } = text;
     const { path, alt } = image;
-
-    useScrollPosition( ( { prevPos, currPos } ) => {
-        const scrollUp = currPos.y >= prevPos.y;
-        const checkValidScrollUp = pageState > 0;
-        const scrollDown = currPos.y <= prevPos.y;
-        const checkValidScrollDown = pageState <= numPageStates;
-
-        if ( scrollUp && checkValidScrollUp  ) setPageState( state => state - 1 );
-        if ( scrollDown && checkValidScrollDown ) setPageState( state => state + 1 );
-
-      }, [ pageState ],
-        null,
-        true,
-        300 );
 
     return (
         <section id={id} ref={viewPanelRef} className={viewPanelContainerClasses}>

@@ -1,10 +1,10 @@
 // styles
 import '../styles/styles.scss'
 
-const MyApp = ({ Component, pageProps }) => {
+const LomouApp = ({ Component, pageProps }) => {
   return (
     <Component {...pageProps} />
   );
 }
 
-export default MyApp;
+export default LomouApp;
