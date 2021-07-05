@@ -34,9 +34,9 @@ const Sidebar = ( {
                                 pageState === index && 'sidebar-icon-active');
 
                             return (
-                                <Link href={`#${_id}`}>
+                                <Link key={alt} href={`#${_id}`}>
                                     <a>
-                                        <IconButton key={alt} className={iconButtonClasses} onClick={() => changePageState( index )}>
+                                        <IconButton className={iconButtonClasses} onClick={() => changePageState( index )}>
                                             {text}
                                             <SVG className={iconClasses}
                                                 data={path}
