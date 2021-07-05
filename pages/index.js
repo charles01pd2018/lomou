@@ -20,10 +20,6 @@ const Home = ( {
   const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
 
   /* FUNCTIONS */
-  const handleSidebarClick = ( event ) => {
-
-  }
-
   const handleViewPanelVisible = ( isVisible, viewPanelIndex ) => {
     if ( isVisible ) setActiveViewPanel( viewPanelIndex );
   }
@@ -48,13 +44,11 @@ const Home = ( {
             return (
               <VisibilitySensor 
                 onChange={( isVisible ) => handleViewPanelVisible( isVisible, index )}
-                minTopValue='10'
-                scrollCheck={true}
-                intervalDelay={10}>
-                <ViewPanel id={`view-panel-`} key={_id}
+                intervalDelay={50}
+                scrollDelay={10}>
+                <ViewPanel id={_id} key={_id}
                   className='snap-scroll'
-                  content={panelContent}
-                  sectionNumber={index} />
+                  content={panelContent} />
               </VisibilitySensor>
             );
           } )
@@ -82,7 +76,7 @@ const HomeContent = {
     sidebarContent: {
       buttonList: [
         {
-          _id: '#view-panel-0',
+          _id: 'best-technology',
           text: 'Superior Wireless Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
@@ -90,7 +84,7 @@ const HomeContent = {
           }
         },
         {
-          _id: '#view-panel-1',
+          _id: 'best-service',
           text: 'Superior Wireless Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
@@ -98,7 +92,7 @@ const HomeContent = {
           }
         },
         {
-          _id: '#view-panel-2',
+          _id: 'best-jawnz',
           text: 'Superior Wireless Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
@@ -111,7 +105,7 @@ const HomeContent = {
   viewPanelContent: {
     panelList: [
       {
-        _id: 'Best Technology',
+        _id: 'best-technology',
         text: {
           headerText: 'The Best Technology There Is',
           descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
@@ -122,7 +116,7 @@ const HomeContent = {
         }
       },
       {
-        _id: 'Best Service',
+        _id: 'best-service',
         text: {
           headerText: 'The Best Service Ever',
           descriptionText: 'We provide the best service in the whole wide world. no cap. no lies. har har har.',
@@ -133,7 +127,7 @@ const HomeContent = {
         }
       },
       {
-        _id: 'Best Jawnz',
+        _id: 'best-jawnz',
         text: {
           headerText: 'The Best Jawnz Ever',
           descriptionText: 'jawn jawn jawn',

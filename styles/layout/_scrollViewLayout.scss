@@ -6,12 +6,12 @@
     background-color: $brand-blue-1;
     
     height: 100vh;
-    // scroll-snap-type: y mandatory;
-    // overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 
     .snap-scroll {
         height: 100vh;
         padding-top: 9rem;
-        // scroll-snap-align: start;
+        scroll-snap-align: start;
     }
 }

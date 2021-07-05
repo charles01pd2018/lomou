@@ -1,5 +1,3 @@
-// dependencies
-import { useRef } from 'react';
 // elements
 import Image from 'next/image';
 import classNames from 'classnames';
@@ -15,9 +13,6 @@ const ViewPanel = ( {
     sectionNumber,
 } ) => {
 
-    /* HOOKS */
-    const viewPanelRef = useRef( sectionNumber );;
-
     /* CLASSNAMES */
     const viewPanelContainerClasses = classNames( 'view-panel-container', className );
 
@@ -26,7 +21,7 @@ const ViewPanel = ( {
     const { path, alt } = image;
 
     return (
-        <section id={id} ref={viewPanelRef} className={viewPanelContainerClasses}>
+        <section id={id} className={viewPanelContainerClasses}>
             <div className='view-panel-wrapper'>
                 <div className='view-panel-text-wrapper'>
                     <h1 className='view-panel-header'>{headerText}</h1>
