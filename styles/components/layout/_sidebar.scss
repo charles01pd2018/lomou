@@ -13,13 +13,39 @@
             height: 100%;
             justify-content: space-around;
 
-            .sidebar-icon-button {
+            .sidebar-icon-wrapper {
+                .sidebar-icon-button {
+                    height: 5rem;
+                    overflow-y: hidden;
 
-                border: 5px solid black;
+                    border: 5px solid black;
 
-                .sidebar-icon {
-                    &.sidebar-icon-active {
-                        border: 5px solid yellow;
+                    $move-up-amount: -1rem;
+                    &:hover, &.sidebar-icon-button-active {
+                        .sidebar-icon {
+                            transform: translateY($move-up-amount);
+                        }
+
+                        .sidebar-icon-text {
+                            transform: translateY($move-up-amount);
+                        }
+                    }
+                    
+                    $move-up-dutation: 0.5s;
+                    .sidebar-icon {
+                        &.sidebar-icon-active {
+                            border: 5px solid yellow;
+                        }
+
+                        transition: transform $move-up-dutation ease;
+                    }
+
+                    .sidebar-icon-text {
+                        position: relative;
+                        bottom: 1.1rem;
+                        
+                        transition: transform $move-up-dutation ease;
+                        border: 5px solid green;
                     }
                 }
             }

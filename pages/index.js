@@ -77,7 +77,7 @@ const HomeContent = {
       buttonList: [
         {
           _id: 'best-technology',
-          text: 'Superior Wireless Charging',
+          text: 'Superior Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
@@ -85,7 +85,7 @@ const HomeContent = {
         },
         {
           _id: 'best-service',
-          text: 'Superior Wireless Charging',
+          text: 'Superior Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
@@ -93,7 +93,7 @@ const HomeContent = {
         },
         {
           _id: 'best-jawnz',
-          text: 'Superior Wireless Charging',
+          text: 'Superior Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',

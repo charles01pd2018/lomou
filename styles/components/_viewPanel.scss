@@ -1,16 +1,27 @@
 .view-panel-container {
     .view-panel-wrapper {
         display: flex;
+        max-width: 87%;
 
         .view-panel-text-wrapper {
             width: 50%;
+
             border: 5px solid red;
+
+            .view-panel-description {
+                line-height: 1.75rem;
+            }
         }
 
         .view-panel-image-wrapper {
             margin-top: 8rem;
+            align-self: center;
 
             border: 5px solid orange;
+
+            .view-panel-image {
+                border: 5px solid black;
+            }
         }
     }
 }

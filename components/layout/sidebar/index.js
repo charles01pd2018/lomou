@@ -1,6 +1,8 @@
 // dependencies
 import Link from 'next/link';
 import classNames from 'classnames';
+// utils
+import { smoothVerticalScrolling } from '../../../utils/smoothScroll';
 // elements
 import { IconButton, SVG } from '../../elements';
 
@@ -34,18 +36,20 @@ const Sidebar = ( {
                                 pageState === index && 'sidebar-icon-active');
 
                             return (
-                                <Link key={alt} href={`#${_id}`}>
-                                    <a>
-                                        <IconButton className={iconButtonClasses} onClick={() => changePageState( index )}>
-                                            {text}
-                                            <SVG className={iconClasses}
-                                                data={path}
-                                                alt={alt}
-                                                width='70'
-                                                height='70' />
-                                        </IconButton>
-                                    </a>
-                                </Link>
+                                <div key={alt} className='sidebar-icon-wrapper'>
+                                    <Link key={alt} href={`#${_id}`}>
+                                        <a>
+                                            <IconButton className={iconButtonClasses} onClick={() => changePageState( index )}>
+                                                <SVG className={iconClasses}
+                                                    data={path}
+                                                    alt={alt}
+                                                    width='70'
+                                                    height='70' />
+                                                <div className='sidebar-icon-text text-sm'>{text}</div>
+                                            </IconButton>
+                                        </a>
+                                    </Link>
+                                </div>
                             );
                         } )
                     }

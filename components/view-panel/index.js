@@ -30,8 +30,10 @@ const ViewPanel = ( {
                 
                 <div className='view-panel-image-wrapper'>
                     <Image src={path} alt={alt}
+                        className='view-panel-image'
                         width='300'
-                        height='300' />
+                        height='300'
+                        layout='intrinsic' />
                 </div>
             </div>
         </section>
