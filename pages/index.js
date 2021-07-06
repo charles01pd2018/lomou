@@ -77,7 +77,7 @@ const HomeContent = {
       buttonList: [
         {
           _id: 'best-technology',
-          text: 'Superior Charging',
+          text: 'Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
@@ -85,7 +85,7 @@ const HomeContent = {
         },
         {
           _id: 'best-service',
-          text: 'Superior Charging',
+          text: 'Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
             alt: 'Wireless Charging',
@@ -93,11 +93,11 @@ const HomeContent = {
         },
         {
           _id: 'best-jawnz',
-          text: 'Superior Charging',
+          text: 'Charging',
           icon: {
             path: '/static/icons/wireless-charging.svg',
-            alt: 'Wireless Charging',
-          }
+            alt: 'Charging',
+          },
         },
       ]
     },
@@ -106,9 +106,13 @@ const HomeContent = {
     panelList: [
       {
         _id: 'best-technology',
+        icon: {
+          path: '/static/icons/wireless-charging.svg',
+          alt: 'Charging',
+        },
         text: {
           headerText: 'The Best Technology There Is',
-          descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
+          descriptionText: 'We are the innovators of technology. We value technology, what it stands for, and everything that is techno. We are the innovators of technology. We value technology, what it stands for, and everything that is techno. We are the innovators of technology. We value technology, what it stands for, and everything that is techno. We are the innovators of technology. We value technology, what it stands for, and everything that is techno.',
         },
         image: {
           path: '/static/images/product--glass-wireless-charger.jpg',
@@ -117,6 +121,10 @@ const HomeContent = {
       },
       {
         _id: 'best-service',
+        icon: {
+          path: '/static/icons/wireless-charging.svg',
+          alt: 'Charging',
+        },
         text: {
           headerText: 'The Best Service Ever',
           descriptionText: 'We provide the best service in the whole wide world. no cap. no lies. har har har.',
@@ -128,6 +136,10 @@ const HomeContent = {
       },
       {
         _id: 'best-jawnz',
+        icon: {
+          path: '/static/icons/wireless-charging.svg',
+          alt: 'Charging',
+        },
         text: {
           headerText: 'The Best Jawnz Ever',
           descriptionText: 'jawn jawn jawn',

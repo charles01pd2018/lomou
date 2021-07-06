@@ -1,11 +1,15 @@
 .view-panel-container {
     .view-panel-wrapper {
         display: flex;
+        justify-content: space-between;
         max-width: 87%;
 
-        .view-panel-text-wrapper {
-            width: 50%;
+        .view-panel-icon-wrapper {
+            display: none;
+        }
 
+        .view-panel-text-wrapper {
+            width: 65%;
             border: 5px solid red;
 
             .view-panel-description {
@@ -14,13 +18,29 @@
         }
 
         .view-panel-image-wrapper {
-            margin-top: 8rem;
-            align-self: center;
+            margin-top: 5rem;
+            height: max-content;
 
             border: 5px solid orange;
 
             .view-panel-image {
                 border: 5px solid black;
+            }
+        }
+
+        @media ( max-width: $breakpoint--medium ) {
+            flex-direction: column;
+            
+            .view-panel-icon-wrapper {
+                display: block;
+            }
+            
+            .view-panel-text-wrapper {
+                width: 100%;
+            }
+
+            .view-panel-image-wrapper {
+                display: none;
             }
         }
     }

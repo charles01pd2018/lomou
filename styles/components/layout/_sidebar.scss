@@ -1,6 +1,7 @@
 .sidebar-container {
     .sidebar-wrapper {
         position: fixed;
+        scroll-behavior: smooth;
         right: 2rem;
         top: 13.5%;
         height: 75%;
@@ -23,11 +24,11 @@
                     $move-up-amount: -1rem;
                     &:hover, &.sidebar-icon-button-active {
                         .sidebar-icon {
-                            transform: translateY($move-up-amount);
+                            transform: translateY( $move-up-amount );
                         }
 
                         .sidebar-icon-text {
-                            transform: translateY($move-up-amount);
+                            transform: translateY( $move-up-amount );
                         }
                     }
                     
@@ -49,6 +50,10 @@
                     }
                 }
             }
+        }
+
+        @media( max-width: $breakpoint--medium ) {
+            display: none;
         }
     }
 }

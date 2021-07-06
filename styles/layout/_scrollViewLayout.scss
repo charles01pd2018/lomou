@@ -1,5 +1,5 @@
 .scroll-view-container {
-    background-image: url( /blob.svg );
+    background-image: url( '/static/layout/blob-desktop.svg' );
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -14,5 +14,9 @@
         height: 100vh;
         padding-top: 9rem;
         scroll-snap-align: start;
+    }
+
+    @media( max-width: $breakpoint--medium ) {
+        background-image: url( '/static/layout/blob-mobile.svg' );
     }
 }
