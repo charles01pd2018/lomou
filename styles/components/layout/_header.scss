@@ -1,10 +1,10 @@
 .header-container {
-    width: 100%;
     position: fixed;
+    width: 100%;
+    top: 0;
     z-index: 99;
 
     .header-wrapper {
-        display: flex;
         justify-content: space-between;
         padding: 1rem 1.5rem;
 
