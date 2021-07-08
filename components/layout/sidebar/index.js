@@ -1,8 +1,7 @@
 // dependencies
-import Link from 'next/link';
 import classNames from 'classnames';
 // elements
-import { IconButton, SVG } from '../../elements';
+import { SVG } from '../../elements';
 
 
 const Sidebar = ( { 
@@ -12,11 +11,6 @@ const Sidebar = ( {
     },
     pageState,
 } ) => {
-
-    /* FUNCTIONS */
-    const changePageState = ( index ) => {
-        setPageState( index );
-    }
 
     return (
         <aside id={id} className='sidebar-container'>
@@ -33,13 +27,13 @@ const Sidebar = ( {
                                 pageState === index && 'sidebar-icon-active');
 
                             return (
-                                <div key={alt} className='sidebar-icon-wrapper'>
+                                <div key={_id} className='sidebar-icon-wrapper'>
                                     <div className={iconButtonClasses}>
                                         <SVG className={iconClasses}
                                             data={path}
                                             alt={alt}
-                                            width='70'
-                                            height='70' />
+                                            width='65'
+                                            height='65' />
                                         <div className='sidebar-icon-text text-sm'>{text}</div>
                                     </div>
                                 </div>

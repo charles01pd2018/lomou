@@ -7,7 +7,7 @@
 
     .sidebar-wrapper {
         height: 100%;
-        
+
         border: 5px solid gray;
 
         .sidebar-nav-wrapper {
@@ -18,37 +18,29 @@
 
             .sidebar-icon-wrapper {
                 .sidebar-icon-button {
-                    display: block;
-                    vertical-align: top;
-                    height: 5rem;
-                    overflow-y: hidden;
+                    padding: 0.5rem;
 
-                    border: 2px solid yellow;
-
-                    $move-up-amount: -1.5rem;
                     &:hover, &.sidebar-icon-button-active {
-                        .sidebar-icon {
-                            transform: translateY( $move-up-amount );
-                        }
+                        background-color: $brand-blue-3;
+                        background-image: radial-gradient( circle at top right, $brand-blue-3, $brand-blue-2 100% ); // sunshine gradient
+                        border-radius: 25px;
 
                         .sidebar-icon-text {
-                            transform: translateY( $move-up-amount );
+                            opacity: 1;
                         }
                     }
                     
-                    $move-up-dutation: 0.5s;
-                    .sidebar-icon {
-                        &.sidebar-icon-active {
-                        }
-
-                        transition: transform $move-up-dutation ease;
-                    }
+                    $sidebar-icon-transition: 0.7s ease;
+                    transition: background-color $sidebar-icon-transition, 
+                        background-image $sidebar-icon-transition,
+                        border-radius $sidebar-icon-transition;
 
                     .sidebar-icon-text {
                         position: relative;
                         bottom: 0.8rem;
+                        opacity: 0;
                         
-                        transition: transform $move-up-dutation ease;
+                        transition: opacity $sidebar-icon-transition;
                     }
                 }
             }
