@@ -40,23 +40,26 @@ const ViewPanel = ( {
         <section id={id} ref={viewPanelRef} className={viewPanelContainerClasses}>
             <div className='view-panel-wrapper'>
                 <div className='view-panel-icon-wrapper'>
-                <SVG className='view-panel-icon'
-                    data={iconPath}
-                    alt={iconAlt}
-                    width='70'
-                    height='70' />
-                </div>
-                <div className='view-panel-text-wrapper'>
-                    <h1 className='view-panel-header'>{headerText}</h1>
-                    <p className='view-panel-description'>{descriptionText}</p>
+                    <SVG className='view-panel-icon'
+                        data={iconPath}
+                        alt={iconAlt}
+                        width='70'
+                        height='70' />
                 </div>
                 
-                <div className='view-panel-image-wrapper'>
-                    <Image src={imagePath} alt={imageAlt}
-                        className='view-panel-image'
-                        width='380'
-                        height='380'
-                        layout='intrinsic' />
+                <div className='view-panel-desktop-wrapper'>
+                    <div className='view-panel-text-wrapper'>
+                        <h1 className='view-panel-header'>{headerText}</h1>
+                        <p className='view-panel-description'>{descriptionText}</p>
+                    </div>
+                    
+                    <div className='view-panel-image-wrapper'>
+                        <Image src={imagePath} alt={imageAlt}
+                            className='view-panel-image'
+                            width='380'
+                            height='380'
+                            layout='intrinsic' />
+                    </div>
                 </div>
             </div>
         </section>
