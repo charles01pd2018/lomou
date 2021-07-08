@@ -1,7 +1,6 @@
 // dependencies
 import Head from 'next/head';
 import { useState } from 'react';
-import VisibilitySensor from 'react-visibility-sensor';
 // components
 import { ViewPanel } from '../components';
 // components / layout
@@ -19,11 +18,6 @@ const Home = ( {
   /* HOOKS */
   const [ activeViewPanel, setActiveViewPanel ] = useState( 0 );
 
-  /* FUNCTIONS */
-  const handleViewPanelVisible = ( isVisible, viewPanelIndex ) => {
-    if ( isVisible ) setActiveViewPanel( viewPanelIndex );
-  }
-
   /* CONTENT */
   const { panelList } = viewPanelContent;
 
@@ -33,23 +27,18 @@ const Home = ( {
       <Head>
           <title>{pageTitle}</title>
       </Head>
-      <ScrollViewLayout content={scrollViewLayoutContent} 
-        pageState={activeViewPanel} 
-        setPageState={setActiveViewPanel}>
+      <ScrollViewLayout content={scrollViewLayoutContent} pageState={activeViewPanel}>
         {
           panelList.map( ( panelItems, index ) => {
             /* CONTENT */
             const { _id, ...panelContent } = panelItems;
 
             return (
-              <VisibilitySensor key={_id}
-                onChange={( isVisible ) => handleViewPanelVisible( isVisible, index )}
-                intervalDelay={50}
-                scrollDelay={10}>
-                <ViewPanel id={_id}
+                <ViewPanel id={_id} key={_id}
                   className='snap-scroll'
-                  content={panelContent} />
-              </VisibilitySensor>
+                  content={panelContent}
+                  sectionNumber={index} 
+                  setPageState={setActiveViewPanel} />
             );
           } )
         }

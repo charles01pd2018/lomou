@@ -1,10 +1,9 @@
-// constants
-import * as breakpoints from '../../constants/breakpoints';
+// dependencies
+import { useInView } from 'react-intersection-observer';
 // elements
 import Image from 'next/image';
 import { SVG } from '../elements';
 import classNames from 'classnames';
-
 
 
 const ViewPanel = ( { 
@@ -16,7 +15,13 @@ const ViewPanel = ( {
         image,
     },
     sectionNumber,
+    setPageState,
 } ) => {
+
+    /* HOOKS */
+    const [ viewPanelRef, viewPanelInView ] = useInView( { 
+        threshold: 0.7,
+    } );
 
     /* CLASSNAMES */
     const viewPanelContainerClasses = classNames( 'view-panel-container', className );
@@ -26,8 +31,13 @@ const ViewPanel = ( {
     const { headerText, descriptionText } = text;
     const { path: imagePath, alt: imageAlt } = image;
 
+    /* CHECKS */
+    if ( viewPanelInView ) {
+        setPageState( sectionNumber );
+    }
+
     return (
-        <section id={id} className={viewPanelContainerClasses}>
+        <section id={id} ref={viewPanelRef} className={viewPanelContainerClasses}>
             <div className='view-panel-wrapper'>
                 <div className='view-panel-icon-wrapper'>
                 <SVG className='view-panel-icon'
