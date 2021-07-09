@@ -4,6 +4,7 @@
 $scrollbar--width:                  0.8rem;
 $scrollbar--color:                  $brand-blue-3;
 $scrollbar--background-color:       lighten( $brand-blue-1, 5% );
+$scrollbar--border-radius:          5px;
 
 /*--------------------------------------------------------------
 # Styling
@@ -27,4 +28,5 @@ $scrollbar--background-color:       lighten( $brand-blue-1, 5% );
 
 ::-webkit-scrollbar-thumb {
     background-color: $scrollbar--color;
+    border-radius: 5px;
 }
