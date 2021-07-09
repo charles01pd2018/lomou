@@ -90,6 +90,16 @@ const HomeContent = {
         },
       ]
     },
+    footerContent: {
+      linkList: [
+        {
+          text: 'contact',
+        },
+        {
+          text: 'blueprint',
+        },
+      ],
+    },
   },
   viewPanelContent: {
     panelList: [

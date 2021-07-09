@@ -1,7 +1,17 @@
 .footer-container {
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+
+    border: 5px solid red;
+
     .footer-wrapper {
-        position: fixed;
-        bottom: 1rem;
-        right: 2rem;
+        display: flex;
+        align-items: center;
+
+        .footer-links-wrapper {
+            margin-right: 2rem;
+            color: $brand-gray-2;
+        }
     }
 }

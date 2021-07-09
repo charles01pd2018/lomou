@@ -7,6 +7,7 @@ const ScrollViewLayout = ( {
     content: {
         headerContent,
         sidebarContent,
+        footerContent,
     },
     pageState,
 } ) => {
@@ -18,7 +19,7 @@ const ScrollViewLayout = ( {
             <div className='container'>
                 <main className='site-content'>{children}</main>
             </div>
-            <Footer id='main-footer' />
+            <Footer id='main-footer' content={footerContent} />
         </div>
     );
 }

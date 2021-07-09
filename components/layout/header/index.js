@@ -1,15 +1,21 @@
+// dependencies
+import classNames from 'classnames';
 // elements
 import { Button } from '../../elements';
 
 const Header = ( { 
     id,
+    className,
     content: {
         buttonList,
     },
 } ) => {
 
+    /* CLASSNAMES */
+    const headerClasses = classNames( 'header-container', className );
+
     return (
-        <aside id={id} className='header-container'>
+        <aside id={id} className={headerClasses}>
             <div className='header-wrapper'>
                 <div className='header-buttons-wrapper'>
                     {
