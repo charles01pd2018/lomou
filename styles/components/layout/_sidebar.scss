@@ -1,7 +1,7 @@
 .sidebar-container {
     position: fixed;
     right: 2rem;
-    top: 13.5%;
+    top: 10%;
     height: 75%;
     z-index: 100;
 
@@ -18,7 +18,13 @@
                 .sidebar-icon-button {
                     padding: 0.5rem;
 
-                    &:hover, &.sidebar-icon-button-active {
+                    &:hover {
+                        .sidebar-icon-text {
+                            opacity: 1;
+                        }
+                    }
+
+                    &.sidebar-icon-button-active {
                         background-color: $brand-blue-3;
                         background-image: radial-gradient( circle at top right, $brand-blue-3, $brand-blue-2 100% ); // sunshine gradient
                         border-radius: 25px;
@@ -37,6 +43,7 @@
                         position: relative;
                         bottom: 0.8rem;
                         opacity: 0;
+                        pointer-events: none;
                         
                         transition: opacity $sidebar-icon-transition;
                     }
