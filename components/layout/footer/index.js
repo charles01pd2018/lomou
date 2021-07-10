@@ -2,6 +2,8 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+// hooks
+import { createStateObject } from '../../../hooks';
 // elements
 import { Logo } from '../../elements';
 // partials
@@ -14,6 +16,7 @@ const Footer = ( {
     content: {
         linkList, // 0 -> custom contact form, ...rest -> generic link popups
     },
+    popupStateName='isPopupActive'
 } ) => {
 
     /* CONTENT */
@@ -21,25 +24,28 @@ const Footer = ( {
 
     /* HOOKS */
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
-    // map through the linkList and create states for each popUp
-    // its gonna look like [ isPopupOneActive, setIsPopupOneActive ] = useState( false );
-    // to close the states, you can loop through the link list and do the same thing with eval
-
+    const [ popupStateObject, setPopupStateObject ] = useState( createStateObject( genericLinkList.length, false, popupStateName ) );
+    console.log( popupStateObject );
 
     /* FUNCTIONS */
-    const handleContactFormClick = () => {
+    const toggleContactForm = () => {
         // closeAllPopUps();
         setIsContactFormActive( state => !state );
     }
 
     const closeAllPopUps = () => {
-        setPopupActive( false );
+        setPopupStateList( state => {
+            state.forEach( ( [ _, setState ] ) => {
+                setState( false );
+            } );
+        } );
     }
 
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
-    const footerTextClasses = classNames( 'footer-text text-sm' );
+    const footerTextClasses = classNames( 'footer-text text-sm' ); 
     const footerLinkTextClasses = classNames( 'footer-link-text text-sm' );
+
 
     return (
         <footer id={id} className={footerClasses}>
@@ -60,17 +66,27 @@ const Footer = ( {
                                 </div>
                             )
                         }
-                        <button className={footerTextClasses} onClick={handleContactFormClick} type='button'>
+                        <button className={footerTextClasses} onClick={toggleContactForm} type='button'>
                             {contactLink.text}
                         </button>
                     </div>
 
                     {
-                        genericLinkList.map( ( { text, subLinkList } ) => {
+                        genericLinkList.map( ( { text, subLinkList }, index ) => {
+                            /* CONTENT */
+                            const footerPopupContent = {
+                                text,
+                                linkList: subLinkList,
+                            }
+
                             return (
-                                <button className='footer-text-wrapper footer-generic-popup'>
-                                    <span className={footerTextClasses}>{text}</span>
-                                </button>
+                                <FooterPopup key={text}
+                                    footerTextClassName={footerTextClasses}
+                                    content={footerPopupContent}
+                                    popupStateObject={popupStateObject}
+                                    setPopupStateObject={setPopupStateObject}
+                                    popupStateName={popupStateName + index}
+                                    closeAllPopups={closeAllPopUps} />
                             );
                         } )
                     }
