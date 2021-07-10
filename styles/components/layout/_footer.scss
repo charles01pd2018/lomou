@@ -7,33 +7,52 @@
 
     .footer-wrapper {
         display: flex;
-        align-items: center;
 
-        .footer-links-wrapper {
-            .footer-text-wrapper {
-                margin-right: 1rem;
+        border: 3px solid blue;
+        
+        .footer-nav-container {
+            display: inline-flex;
+            align-items: center;
 
-                .footer-popup-wrapper {
+            border: 5px solid yellow;
+
+            .footer-nav-wrapper {
+                .footer-popup-container  {
+                     // required for popup to not take space in the document flow
                     position: relative;
-                    bottom: 5rem;
-                    float: top;
-                    z-index: 9;
-                    color: black;
-                    background-color: white;
-                    padding: 1.5rem;
-
-                    // border: 2px solid red;
-                    transition: opacity 0.5s ease;
+    
+                    .footer-popup-wrapper {
+                        position: absolute;
+                        bottom: 1rem;
+                        right: 2.5rem;
+                        background-color: white;
+                        border-radius: 8px;
+                        padding: 1.5rem;
+                        z-index: 9;
+                       
+                        // do not display by default
+                        // opacity: 0;
+                        // visibility: hidden;
+    
+                        transition: opacity 0.5s ease;
+    
+                        .footer-link-text {
+                            white-space: nowrap;
+                        }
+                    }
                 }
                 
                 .footer-text {
+                    margin-right: 1rem;
                     color: $brand-gray-2;
-                }
-                
-                &:hover {
-                    .footer-popup-wrapper {
-                        // display: inline-block;
-                        opacity: 1;
+                    
+                    border: 5px solid orange;
+
+                    &:hover {
+                        // .footer-popup-wrapper {
+                        //     visibility: visible;
+                        //     opacity: 1;
+                        // }
                     }
                 }
             }

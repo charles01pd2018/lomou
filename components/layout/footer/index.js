@@ -1,7 +1,7 @@
 // dependencies
 import classNames from 'classnames';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 // elements
 import { Logo } from '../../elements';
 // partials
@@ -12,7 +12,7 @@ const Footer = ( {
     id,
     className,
     content: {
-        linkList, // 0 -> contact, 1 -> blueprint
+        linkList, // 0 -> custom contact form, ...rest -> generic link popups
     },
 } ) => {
 
@@ -20,12 +20,20 @@ const Footer = ( {
     const [ contactLink, ...genericLinkList ] = linkList;
 
     /* HOOKS */
-    const [ contactFormActive, setContactFormActive ] = useState( false );
-    const [ blueprintPopUpActive, setBlueprintPopUpActive ] = useState( false );
+    const [ isContactFormActive, setIsContactFormActive ] = useState( false );
+    // map through the linkList and create states for each popUp
+    // its gonna look like [ isPopupOneActive, setIsPopupOneActive ] = useState( false );
+    // to close the states, you can loop through the link list and do the same thing with eval
+
 
     /* FUNCTIONS */
     const handleContactFormClick = () => {
-        setContactFormActive( state => !state );
+        // closeAllPopUps();
+        setIsContactFormActive( state => !state );
+    }
+
+    const closeAllPopUps = () => {
+        setPopupActive( false );
     }
 
     /* CLASSNAMES */
@@ -36,17 +44,27 @@ const Footer = ( {
     return (
         <footer id={id} className={footerClasses}>
             <div className='footer-wrapper'>
-                <div className='footer-links-wrapper'>
-                    <button className='footer-text-wrapper footer-custom-popup' onClick={handleContactFormClick} type='button'>
-                        <div className='footer-contact-form-wrapper footer-popup-wrapper'>
-                            <Link href='/documentation'>
-                                <span className={footerLinkTextClasses}>
-                                    Contact Form
-                                </span>
-                            </Link>
-                        </div>
-                        <span className={footerTextClasses}>{contactLink.text}</span>
-                    </button>
+                <div className='footer-nav-container'>
+
+                    <div className='footer-nav-wrapper'>
+                        {
+                             isContactFormActive && (
+                                <div className='footer-popup-container footer-contact-form-container'>
+                                    <div className='footer-popup-wrapper footer-contact-form-wrapper'>
+                                        <Link href='/documentation'>
+                                            <a className={footerLinkTextClasses}>
+                                                Contact Form
+                                            </a>
+                                        </Link>
+                                    </div>
+                                </div>
+                            )
+                        }
+                        <button className={footerTextClasses} onClick={handleContactFormClick} type='button'>
+                            {contactLink.text}
+                        </button>
+                    </div>
+
                     {
                         genericLinkList.map( ( { text, subLinkList } ) => {
                             return (
