@@ -31,17 +31,19 @@ const Footer = ( {
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
-        closeAllPopups();
+        closeAllOtherPopups();
         setIsContactFormActive( state => !state );
     }
 
-    const closeAllPopups = () => {
+    // if no argument is provided, all popups will be closed
+    const closeAllOtherPopups = ( focusedPopupName='' ) => {
         setIsContactFormActive( false );
 
         setPopupStateObject( ( state ) => {
             const newPopupStateObject = {};
             Object.keys( state ).forEach( ( key ) => {
-                newPopupStateObject[ key ] = false;
+                if ( key === focusedPopupName ) newPopupStateObject[ key ] = state[ key ];
+                else newPopupStateObject[ key ] = false;
             } );
 
             return newPopupStateObject;
@@ -49,7 +51,7 @@ const Footer = ( {
     }
 
     const clickOutside = ( event ) => {
-        clickOutsideEvent( event, footerNavRef, closeAllPopups );
+        clickOutsideEvent( event, footerNavRef, closeAllOtherPopups );
     }
 
     /* CLASSNAMES */
@@ -83,8 +85,8 @@ const Footer = ( {
                                 </div>
                             )
                         }
-                        <button className={footerTextClasses} onClick={toggleContactForm} type='button'>
-                            *{contactLink.text}
+                        <button className={`${footerTextClasses} footer-custom-text`} onClick={toggleContactForm} type='button'>
+                            {contactLink.text}
                         </button>
                     </div>
 
@@ -103,7 +105,7 @@ const Footer = ( {
                                     popupStateObject={popupStateObject}
                                     setPopupStateObject={setPopupStateObject}
                                     popupStateName={popupStateName + index}
-                                    closeAllPopups={closeAllPopups} />
+                                    closeAllOtherPopups={closeAllOtherPopups} />
                             );
                         } )
                     }

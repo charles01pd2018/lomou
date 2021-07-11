@@ -14,7 +14,7 @@ const FooterPopup = ( {
     popupStateObject,
     setPopupStateObject,
     popupStateName,
-    closeAllPopups,
+    closeAllOtherPopups,
 } ) => {
 
     /* CONSTANTS */
@@ -22,9 +22,11 @@ const FooterPopup = ( {
 
     /* FUNCTIONS */
     const togglerFooterPopup = () => {
-        closeAllPopups();
+        closeAllOtherPopups( popupStateName );
+
         setPopupStateObject( ( state ) => {
             const currentState = state[ popupStateName ];
+
             return {
                 ...state,
                 [ popupStateName ]: !currentState, // this has to be put second to update the object correctly 
@@ -33,7 +35,7 @@ const FooterPopup = ( {
     }
     
     /* CLASSNAMES */
-    const isPopupActiveClasses = isPopupActive ? 'active' : 'not-active';
+    const isPopupActiveClasses = isPopupActive ? 'active' : 'not-active item-leave';
     const footerPopupNavWrapperClasses = classNames( 'footer-popup-nav-wrapper',
         isPopupActiveClasses );
     const footerTextClasses = classNames( footerTextClassName, 
@@ -71,8 +73,8 @@ const FooterPopup = ( {
                     } )
                 }
             </div>
-             <button className={footerTextClasses} onClick={togglerFooterPopup} type='button'>
-                ^{text}
+             <button className={`${footerTextClasses} footer-generic-text`} onClick={togglerFooterPopup} type='button'>
+                {text}
             </button>
         </div>
     );

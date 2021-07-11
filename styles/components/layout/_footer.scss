@@ -21,16 +21,15 @@
                         background-color: white;
                         border-radius: 8px;
 
-                      
-                        transition: transform 0.35s ease;
+                        transition: transform 0.27s ease;
 
                         &.active {
                             transform: scale( 1 );
                         }
 
                         &.not-active {
-                            transform: scaleX( 0.5 );
-                            transform: scaleY( 0.8 );
+                            transform: scaleY( 0.9 );
+                            transform: scaleX( 0.7 );
                         }
 
                         .footer-popup-link-wrapper {
@@ -66,9 +65,30 @@
                 color: $brand-gray-2;
 
                 transition: color 0.3s ease;
-
+                
                 &:hover, &.active {
                     color: black;
+                }
+
+                &:before {
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+
+                &:hover:before {
+                    opacity: 1;
+                }
+
+                &.footer-custom-text {
+                    &:before {
+                        content: '*';
+                    }
+                }
+
+                &.footer-generic-text {
+                    &:before {
+                        content: '^';
+                    }
                 }
             }
         }
