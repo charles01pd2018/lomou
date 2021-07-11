@@ -3,57 +3,72 @@
     bottom: 1rem;
     right: 2rem;
 
-    border: 5px solid red;
-
     .footer-wrapper {
         display: flex;
 
-        border: 3px solid blue;
-        
-        .footer-nav-container {
+        .footer-nav-wrapper {
             display: inline-flex;
             align-items: center;
 
-            border: 5px solid yellow;
-
-            .footer-nav-wrapper {
-                .footer-popup-container  {
-                     // required for popup to not take space in the document flow
+            .footer-popup-nav-container {
+                    // required for popup to not take space in the document flow
                     position: relative;
-    
-                    .footer-popup-wrapper {
+
+                    .footer-popup-nav-wrapper {
                         position: absolute;
-                        bottom: 1rem;
-                        right: 2.5rem;
+                        bottom: 3rem;
+                        right: 3rem;
                         background-color: white;
                         border-radius: 8px;
-                        padding: 1.5rem;
-                        z-index: 9;
-                       
-                        // do not display by default
-                        // opacity: 0;
-                        // visibility: hidden;
-    
-                        transition: opacity 0.5s ease;
-    
-                        .footer-link-text {
-                            white-space: nowrap;
+
+                      
+                        transition: transform 0.35s ease;
+
+                        &.active {
+                            transform: scale( 1 );
+                        }
+
+                        &.not-active {
+                            transform: scaleX( 0.5 );
+                            transform: scaleY( 0.8 );
+                        }
+
+                        .footer-popup-link-wrapper {
+                            display: flex;
+                            flex-direction: column;
+
+                            .footer-popup-link {
+                                display: flex;
+                                align-items: center;
+                                padding: 1rem 0.75rem;
+                                z-index: 9;
+                                
+                                transition: background-color 0.3s ease;
+
+                                &:hover {
+                                    background-color: $brand-gray-1;
+                                }
+                                
+                                .footer-popup-link-icon {
+                                    padding-right: 0.3rem;
+                                }
+
+                                .footer-link-text {
+                                    white-space: nowrap;
+                                }
+                            }
                         }
                     }
                 }
                 
-                .footer-text {
-                    margin-right: 1rem;
-                    color: $brand-gray-2;
-                    
-                    border: 5px solid orange;
+            .footer-text {
+                margin-right: 1rem;
+                color: $brand-gray-2;
 
-                    &:hover {
-                        // .footer-popup-wrapper {
-                        //     visibility: visible;
-                        //     opacity: 1;
-                        // }
-                    }
+                transition: color 0.3s ease;
+
+                &:hover, &.active {
+                    color: black;
                 }
             }
         }

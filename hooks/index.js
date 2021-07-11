@@ -1,5 +1,5 @@
-import createStateObject from './createStateObject';
+import useStateObject from './useStateObject';
 
 export {
-    createStateObject,
+    useStateObject,
 }

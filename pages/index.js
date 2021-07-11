@@ -124,6 +124,19 @@ const HomeContent = {
             },
           ],
         },
+        {
+          text: 'hello',
+          subLinkList: [
+            {
+              text: 'Jawnz',
+              href: '/documentation',
+              icon: {
+                path: '/static/icons/wireless-charging.svg',
+                alt: 'Charging',
+              },
+            }
+          ]
+        }
       ],
     },
   },

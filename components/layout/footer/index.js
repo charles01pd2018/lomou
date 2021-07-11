@@ -1,9 +1,11 @@
 // dependencies
 import classNames from 'classnames';
 import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 // hooks
-import { createStateObject } from '../../../hooks';
+import { useStateObject } from '../../../hooks';
+// utils
+import { clickOutsideEvent } from '../../../utils';
 // elements
 import { Logo } from '../../elements';
 // partials
@@ -23,51 +25,66 @@ const Footer = ( {
     const [ contactLink, ...genericLinkList ] = linkList;
 
     /* HOOKS */
+    const footerNavRef = useRef( null );
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
-    const [ popupStateObject, setPopupStateObject ] = useState( createStateObject( genericLinkList.length, false, popupStateName ) );
-    console.log( popupStateObject );
+    const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
-        // closeAllPopUps();
+        closeAllPopups();
         setIsContactFormActive( state => !state );
     }
 
-    const closeAllPopUps = () => {
-        setPopupStateList( state => {
-            state.forEach( ( [ _, setState ] ) => {
-                setState( false );
+    const closeAllPopups = () => {
+        setIsContactFormActive( false );
+
+        setPopupStateObject( ( state ) => {
+            const newPopupStateObject = {};
+            Object.keys( state ).forEach( ( key ) => {
+                newPopupStateObject[ key ] = false;
             } );
+
+            return newPopupStateObject;
         } );
+    }
+
+    const clickOutside = ( event ) => {
+        clickOutsideEvent( event, footerNavRef, closeAllPopups );
     }
 
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
     const footerTextClasses = classNames( 'footer-text text-sm' ); 
+    // DELETE THIS LATER
     const footerLinkTextClasses = classNames( 'footer-link-text text-sm' );
 
+
+    useEffect( () => {
+        document.addEventListener( 'click', clickOutside );
+        return () => {
+            document.removeEventListener( 'click', clickOutside );
+        }
+    }, [] );
 
     return (
         <footer id={id} className={footerClasses}>
             <div className='footer-wrapper'>
-                <div className='footer-nav-container'>
+                <div ref={footerNavRef} className='footer-nav-wrapper'>
 
-                    <div className='footer-nav-wrapper'>
+                    <div className='footer-popup-nav-wrapper'>
                         {
                              isContactFormActive && (
-                                <div className='footer-popup-container footer-contact-form-container'>
-                                    <div className='footer-popup-wrapper footer-contact-form-wrapper'>
-                                        <Link href='/documentation'>
-                                            <a className={footerLinkTextClasses}>
-                                                Contact Form
-                                            </a>
-                                        </Link>
-                                    </div>
+                                <div className='footer-popup-link-wrapper footer-contact-form-wrapper'>
+                                    <Link href='/documentation'>
+                                        <a className={footerLinkTextClasses}>
+                                            Contact Form
+                                        </a>
+                                    </Link>
                                 </div>
                             )
                         }
                         <button className={footerTextClasses} onClick={toggleContactForm} type='button'>
-                            {contactLink.text}
+                            *{contactLink.text}
                         </button>
                     </div>
 
@@ -86,7 +103,7 @@ const Footer = ( {
                                     popupStateObject={popupStateObject}
                                     setPopupStateObject={setPopupStateObject}
                                     popupStateName={popupStateName + index}
-                                    closeAllPopups={closeAllPopUps} />
+                                    closeAllPopups={closeAllPopups} />
                             );
                         } )
                     }
