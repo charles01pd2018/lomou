@@ -57,8 +57,6 @@ const Footer = ( {
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
     const footerTextClasses = classNames( 'footer-text text-sm' ); 
-    // DELETE THIS LATER
-    const footerLinkTextClasses = classNames( 'footer-link-text text-sm' );
 
 
     useEffect( () => {
@@ -72,23 +70,11 @@ const Footer = ( {
         <footer id={id} className={footerClasses}>
             <div className='footer-wrapper'>
                 <div ref={footerNavRef} className='footer-nav-wrapper'>
-
-                    <div className='footer-popup-nav-wrapper'>
-                        {
-                             isContactFormActive && (
-                                <div className='footer-popup-link-wrapper footer-contact-form-wrapper'>
-                                    <Link href='/documentation'>
-                                        <a className={footerLinkTextClasses}>
-                                            Contact Form
-                                        </a>
-                                    </Link>
-                                </div>
-                            )
-                        }
-                        <button className={`${footerTextClasses} footer-custom-text`} onClick={toggleContactForm} type='button'>
+                    <Link href='/contact'>
+                        <a className={`${footerTextClasses} footer-custom-text`}>
                             {contactLink.text}
-                        </button>
-                    </div>
+                        </a>
+                    </Link>
 
                     {
                         genericLinkList.map( ( { text, subLinkList }, index ) => {

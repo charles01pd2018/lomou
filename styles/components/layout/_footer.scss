@@ -3,6 +3,14 @@
     bottom: 1rem;
     right: 2rem;
 
+    &.footer-static {
+        position: static;
+        display: flex;
+        justify-content: flex-end;
+        padding: 2rem;
+        padding-top: 5rem;
+    }
+
     .footer-wrapper {
         display: flex;
 

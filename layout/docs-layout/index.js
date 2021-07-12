@@ -34,7 +34,7 @@ const DocsLayout = ( {
     }, [] );
 
     return (
-        <div className='docs-layout-container'>
+        <div className='docs-layout-container brand-layout'>
             <ProgressBar id='doc-progress-bar' 
                 scrollPercent={scrollPercent}
                 color={colors.brandBlue5} 
