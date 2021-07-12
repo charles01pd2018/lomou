@@ -6,9 +6,9 @@ const ContactForm = ( {
 
     return (
         <section id={id} className='contact-form-container'>
-            <div className='contact-form-wrapper'>
+            <form className='contact-form-wrapper'>
                 Contact Form
-            </div>
+            </form>
         </section>
     );
 }

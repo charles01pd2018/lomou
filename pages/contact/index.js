@@ -10,6 +10,7 @@ const Contact = ( {
     content: {
         pageTitle,
         pageLayoutContent,
+        contactFormContent,
     },
  } ) => {
 
@@ -19,7 +20,7 @@ const Contact = ( {
                 <title>{pageTitle}</title>
             </Head>
             <PageLayout content={pageLayoutContent}>
-                <ContactForm id='main-contact' />
+                <ContactForm id='main-contact' content={contactFormContent} />
             </PageLayout>
         </>
     );
@@ -88,6 +89,9 @@ const docsContent = {
               }
             ],
           },
+    },
+    contactFormContent: {
+
     }
 }
 
