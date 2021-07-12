@@ -1,11 +1,11 @@
 import ViewPanel from './view-panel';
 import Doc from './doc';
 import ProgressBar from './progress-bar';
-import ContactForm from './contactForm';
+import Modal from './modal';
 
 export {
     ViewPanel,
     Doc,
     ProgressBar,
-    ContactForm,
+    Modal,
 };
