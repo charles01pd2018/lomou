@@ -51,6 +51,18 @@ const docsContent = {
                 header: 'Data',
                 paragraph: 'You will follow our rules while you are on our site',
             },
+            {
+                header: 'Data',
+                paragraph: 'You will follow our rules while you are on our site',
+            },
+            {
+                header: 'Data',
+                paragraph: 'You will follow our rules while you are on our site',
+            },
+            {
+                header: 'Data',
+                paragraph: 'You will follow our rules while you are on our site',
+            },
         ]
     },
 }
