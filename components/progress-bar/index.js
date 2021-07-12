@@ -2,10 +2,12 @@
 const ProgressBar = ( { 
     id,
     scrollPercent,
+    color,
+    backgroundColor
 } ) => {
     
     const progressBarStyles = {
-        background: `linear-gradient( to right, blue ${scrollPercent}%, lightblue 0% )`,
+        background: `linear-gradient( to right, ${color} ${scrollPercent}%, ${backgroundColor} 0% )`,
     }
 
     // console.log( scrollPercent );
