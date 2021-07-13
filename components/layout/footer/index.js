@@ -1,12 +1,11 @@
 // dependencies
 import classNames from 'classnames';
+import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 // hooks
 import { useStateObject } from '../../../hooks';
 // utils
 import { clickOutsideEvent } from '../../../utils';
-// components
-import Modal from '../../modal';
 // elements
 import { Logo } from '../../elements';
 // partials
@@ -36,9 +35,9 @@ const Footer = ( {
         setIsContactFormActive( state => !state );
     }
 
-    // if no arguments are provided, all popups will be closed
-    const closeAllOtherPopups = ( contactPopup=false, focusedPopupName='' ) => {
-        if ( contactPopup ) setIsContactFormActive( false );
+    // if no argument is provided, all popups will be closed
+    const closeAllOtherPopups = ( focusedPopupName='' ) => {
+        setIsContactFormActive( false );
 
         setPopupStateObject( ( state ) => {
             const newPopupStateObject = {};
@@ -59,6 +58,7 @@ const Footer = ( {
     const footerClasses = classNames( 'footer-container', className );
     const footerTextClasses = classNames( 'footer-text text-sm' ); 
 
+
     useEffect( () => {
         document.addEventListener( 'click', clickOutside );
         return () => {
@@ -67,48 +67,40 @@ const Footer = ( {
     }, [] );
 
     return (
-        <>
-            <Modal id='footer-modal'
-                content={contactLink.modalContent}
-                isModalActive={isContactFormActive}
-                setIsModalActive={setIsContactFormActive}
-                closeAllOtherPopups={closeAllOtherPopups} />
-            <footer id={id} className={footerClasses}>
-                <div className='footer-wrapper'>
-                    <div ref={footerNavRef} className='footer-nav-wrapper'>
-                        <div className='footer-contact-form-wrapper'>
-                            <button className={`${footerTextClasses} ${isContactFormActive ? 'active' : 'not-active'} footer-custom-text`} 
-                                onClick={toggleContactForm} type='button'>
-                                {contactLink.text}
-                            </button>
-                        </div>
+        <footer id={id} className={footerClasses}>
+            <div className='footer-wrapper'>
+                <div ref={footerNavRef} className='footer-nav-wrapper'>
+                    <Link href='/contact'>
+                        <a className={`${footerTextClasses} footer-custom-text`}>
+                            {contactLink.text}
+                        </a>
+                    </Link>
 
-                        {
-                            genericLinkList.map( ( { text, subLinkList }, index ) => {
-                                /* CONTENT */
-                                const footerPopupContent = {
-                                    text,
-                                    linkList: subLinkList,
-                                };
+                    {
+                        genericLinkList.map( ( { text, subLinkList }, index ) => {
+                            /* CONTENT */
+                            const footerPopupContent = {
+                                text,
+                                linkList: subLinkList,
+                            }
 
-                                return (
-                                    <FooterPopup key={text}
-                                        footerTextClassName={footerTextClasses}
-                                        content={footerPopupContent}
-                                        popupStateObject={popupStateObject}
-                                        setPopupStateObject={setPopupStateObject}
-                                        popupStateName={popupStateName + index}
-                                        closeAllOtherPopups={closeAllOtherPopups} />
-                                );
-                            } )
-                        }
-                    </div>
-                    <Logo className='footer-text-logo' 
-                        type='word'
-                        width='100' height='50' />
+                            return (
+                                <FooterPopup key={text}
+                                    footerTextClassName={footerTextClasses}
+                                    content={footerPopupContent}
+                                    popupStateObject={popupStateObject}
+                                    setPopupStateObject={setPopupStateObject}
+                                    popupStateName={popupStateName + index}
+                                    closeAllOtherPopups={closeAllOtherPopups} />
+                            );
+                        } )
+                    }
                 </div>
-            </footer>
-        </>
+                <Logo className='footer-text-logo' 
+                    type='word'
+                    width='100' height='50' />
+            </div>
+        </footer>
     );
 }
 

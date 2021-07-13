@@ -94,9 +94,6 @@ const HomeContent = {
       linkList: [
         {
           text: 'contact', // custom
-          modalContent: {
-            text: 'lomoulolo@gmail.com',
-          }
         },
         {
           text: 'blueprint',

@@ -24,7 +24,7 @@
 # Components
 --------------------------------------------------------------*/
 @import './components/viewPanel', './components/doc', 
-    './components/progressBar', './components/modal';
+    './components/progressBar';
 
 /*--------------------------------------------------------------
 # Components / Layout
@@ -41,4 +41,4 @@
 # Layout
 --------------------------------------------------------------*/
 @import './layout/scrollViewLayout', './layout/docsLayout',
-    './layout/common';
+    './layout/pageLayout', './layout/common';
