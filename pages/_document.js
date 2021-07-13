@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <link rel="preload" href="/static/fonts/telex/Telex-Regular.ttf" as="font" crossOrigin="" /> 
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body>
+        <body className='loading'>
           <Main />
           <NextScript />
         </body>
