@@ -51,10 +51,10 @@ const FooterPopup = ( {
                         const { path, alt } = icon;
 
                         return (
-                            <div className='footer-popup-link-wrapper'>
+                            <div key={text} className='footer-popup-link-wrapper'>
                                 {
                                     isPopupActive && (
-                                        <Link key={text} href={href}>
+                                        <Link href={href}>
                                             <a className='footer-popup-link'>
                                                 <SVG className='footer-popup-link-icon'
                                                     data={path}

@@ -76,6 +76,10 @@
                 
                 &:hover, &.active {
                     color: black;
+
+                    &:before {
+                        opacity: 1;
+                    }
                 }
 
                 &:before {
