@@ -1,7 +1,10 @@
 // dependencies
 import classNames from 'classnames';
+// hooks
+import { useStateObject } from '../../../hooks';
 // elements
-import { Button } from '../../elements';
+import { Button, LinkButton } from '../../elements';
+
 
 const Header = ( { 
     id,
@@ -11,20 +14,26 @@ const Header = ( {
     },
 } ) => {
 
+    /* CONTENT */
+    const [ linkButton, ...subLinkButtons ] = buttonList;
+
     /* CLASSNAMES */
     const headerClasses = classNames( 'header-container', className );
+    const headerButtonClasses = classNames( 'header-button button-lg' );
 
     return (
         <aside id={id} className={headerClasses}>
             <div className='header-wrapper'>
                 <div className='header-buttons-wrapper'>
+                    <LinkButton className={`${headerButtonClasses} header-link-button header-button--${linkButton.text}`} 
+                        content={linkButton} />
                     {
-                        buttonList.map( ( buttonContent ) => {
+                        subLinkButtons.map( ( buttonContent ) => {
                             /* CONTENT */
                             const { text } =  buttonContent;
 
                             return (
-                                <Button key={text} className={`header-button--${text} header-button button-lg`} 
+                                <Button key={text} className={`${headerButtonClasses} header-sublink-button header-button--${text}`} 
                                     content={buttonContent} />
                             );
                         } )

@@ -20,8 +20,32 @@
             .header-button {
                 margin-right: 3rem;
 
-                &:last-of-type {
-                    margin-right: 0;
+                &:hover, &.active {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+
+                &:after {
+                    position: absolute;
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+
+                &.header-link-button {
+                    &:after {
+                        content: '>';
+                    }
+                }
+
+                &.header-sublink-button {
+                    &:last-of-type {
+                        margin-right: 2rem;
+                    }
+
+                    &:after {
+                        content: '^';
+                    }
                 }
             }
 
