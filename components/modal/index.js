@@ -1,5 +1,4 @@
 // dependencies
-import { useRef } from 'react';
 import classNames from 'classnames';
 
 
@@ -11,9 +10,6 @@ const Modal = ({
     isModalActive,
     setIsModalActive,
 }) => {
-
-    /* HOOKS */
-    const closeModalRef = useRef( null );
 
     /* FUNCTIONS */
     const closeModal = () => {
@@ -33,7 +29,7 @@ const Modal = ({
                         {text}
                     </div>
                 </div>
-            <button ref={closeModalRef} className='modal-backdrop' onClick={closeModal} type='button' tabIndex='-1' hidden />
+            <button className='modal-backdrop' onClick={closeModal} type='button' tabIndex='-1' hidden />
         </section>
     );
 }

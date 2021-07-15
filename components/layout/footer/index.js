@@ -3,6 +3,8 @@ import classNames from 'classnames';
 import { useState } from 'react';
 // hooks
 import { useStateObject, useClickOutsideRef } from '../../../hooks';
+// utils
+import { closeAllPopups } from '../../../utils';
 // components
 import Modal from '../../modal';
 // elements
@@ -20,35 +22,38 @@ const Footer = ( {
     popupStateName='isPopupActive'
 } ) => {
 
-    /* FUNCTIONS */
-    const toggleContactForm = () => {
-        closeAllOtherPopups();
-        setIsContactFormActive( state => !state );
-    }
+    // // if no arguments are provided, all popups will be closed
+    // //  [ list of custom setStates ], [ list of setStateObjects ], focusedPopupName: string, stateSet: any=false
+    // const closeAllOtherPopups = ( contactPopup=false, focusedPopupName='' ) => {
+    //     if ( contactPopup ) setIsContactFormActive( false );
 
-    // if no arguments are provided, all popups will be closed
-    const closeAllOtherPopups = ( contactPopup=false, focusedPopupName='' ) => {
-        if ( contactPopup ) setIsContactFormActive( false );
+    //     setPopupStateObject( ( state ) => {
+    //         const newPopupStateObject = {};
+    //         Object.keys( state ).forEach( ( key ) => {
+    //             if ( key === focusedPopupName ) newPopupStateObject[ key ] = state[ key ];
+    //             else newPopupStateObject[ key ] = false;
+    //         } );
 
-        setPopupStateObject( ( state ) => {
-            const newPopupStateObject = {};
-            Object.keys( state ).forEach( ( key ) => {
-                if ( key === focusedPopupName ) newPopupStateObject[ key ] = state[ key ];
-                else newPopupStateObject[ key ] = false;
-            } );
-
-            return newPopupStateObject;
-        } );
-    }
+    //         return newPopupStateObject;
+    //     } );
+    // }
 
     /* CONTENT */
     const [ contactLink, ...genericLinkList ] = linkList;
 
     /* HOOKS */
-    const footerNavRef = useClickOutsideRef( closeAllOtherPopups );
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
+    const footerNavRef = useClickOutsideRef( ( setIsContactFormActive , setPopupStateObject ) => { closeAllPopups( 
+        [ setIsContactFormActive ],
+        setPopupStateObject
+     ) } );
 
+    /* FUNCTIONS */
+    const toggleContactForm = () => {
+        closeAllPopups( [ setIsContactFormActive ], setPopupStateObject );
+        setIsContactFormActive( state => !state );
+    }
 
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
@@ -59,8 +64,7 @@ const Footer = ( {
             <Modal id='footer-modal'
                 content={contactLink.modalContent}
                 isModalActive={isContactFormActive}
-                setIsModalActive={setIsContactFormActive}
-                closeAllOtherPopups={closeAllOtherPopups} />
+                setIsModalActive={setIsContactFormActive} />
             <footer id={id} className={footerClasses}>
                 <div className='footer-wrapper'>
                     <div ref={footerNavRef} className='footer-nav-wrapper'>
@@ -86,7 +90,7 @@ const Footer = ( {
                                         popupStateObject={popupStateObject}
                                         setPopupStateObject={setPopupStateObject}
                                         popupStateName={popupStateName + index}
-                                        closeAllOtherPopups={closeAllOtherPopups} />
+                                        closeAllPopups={closeAllPopups} />
                                 );
                             } )
                         }

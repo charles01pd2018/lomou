@@ -14,7 +14,7 @@ const FooterPopup = ( {
     popupStateObject,
     setPopupStateObject,
     popupStateName,
-    closeAllOtherPopups,
+    closeAllPopups,
 } ) => {
 
     /* CONSTANTS */
@@ -22,7 +22,7 @@ const FooterPopup = ( {
 
     /* FUNCTIONS */
     const togglerFooterPopup = () => {
-        closeAllOtherPopups( true, popupStateName );
+        closeAllPopups( null, setPopupStateObject, popupStateName );
 
         setPopupStateObject( ( state ) => {
             const currentState = state[ popupStateName ];
