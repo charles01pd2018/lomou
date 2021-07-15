@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { Doc } from '../../components';
 // layout
 import { DocsLayout } from '../../layout';
+// layout / content
+import { headerContent } from '../../layout/content';
 
 
 const Documentation = ( {
@@ -30,16 +32,7 @@ const Documentation = ( {
 const docsContent = {
     pageTitle: 'lomou: Docs',
     docsLayoutContent: {
-        headerContent: {
-            buttonList: [
-                {
-                    text: 'Shop',
-                },
-                {
-                    text: 'Explore'
-                }
-            ],
-        },
+        headerContent,
     },
     docContent: {
         docList: [

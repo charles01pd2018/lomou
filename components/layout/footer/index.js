@@ -1,10 +1,8 @@
 // dependencies
 import classNames from 'classnames';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 // hooks
-import { useStateObject } from '../../../hooks';
-// utils
-import { clickOutsideEvent } from '../../../utils';
+import { useStateObject, useClickOutsideRef } from '../../../hooks';
 // components
 import Modal from '../../modal';
 // elements
@@ -21,14 +19,6 @@ const Footer = ( {
     },
     popupStateName='isPopupActive'
 } ) => {
-
-    /* CONTENT */
-    const [ contactLink, ...genericLinkList ] = linkList;
-
-    /* HOOKS */
-    const footerNavRef = useRef( null );
-    const [ isContactFormActive, setIsContactFormActive ] = useState( false );
-    const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
@@ -51,20 +41,18 @@ const Footer = ( {
         } );
     }
 
-    const clickOutside = ( event ) => {
-        clickOutsideEvent( event, footerNavRef, closeAllOtherPopups );
-    }
+    /* CONTENT */
+    const [ contactLink, ...genericLinkList ] = linkList;
+
+    /* HOOKS */
+    const footerNavRef = useClickOutsideRef( closeAllOtherPopups );
+    const [ isContactFormActive, setIsContactFormActive ] = useState( false );
+    const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
+
 
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
     const footerTextClasses = classNames( 'footer-text text-sm' ); 
-
-    useEffect( () => {
-        document.addEventListener( 'click', clickOutside );
-        return () => {
-            document.removeEventListener( 'click', clickOutside );
-        }
-    }, [] );
 
     return (
         <>

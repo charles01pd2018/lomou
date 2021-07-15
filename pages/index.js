@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { ViewPanel } from '../components';
 // components / layout
 import { ScrollViewLayout } from '../layout';
+// layout / content
+import { headerContent, sidebarContent, footerContent } from '../layout/content';
 
 
 const Home = ( {
@@ -52,173 +54,9 @@ const Home = ( {
 const HomeContent = {
   pageTitle: 'lomou',
   scrollViewLayoutContent: {
-    headerContent: {
-      buttonList: [
-        {
-          text: 'Shop', // regular link
-          href: '/shop',
-        },
-        {
-          text: 'Explore',
-          linkList: [
-            {
-              text: 'Blog',
-              href: '/blog',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-              subLinkList: [
-                {
-                  text: 'Qi Wireless Charging',
-                  descriptionText: 'Learn about the Qi Standard',
-                  href: '/blog/qi-charging',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-                {
-                  text: 'Materials',
-                  descriptionText: 'Learn about the materials',
-                  href: '/blog/materials',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-                {
-                  text: 'More Jawnz',
-                  descriptionText: 'Learn about the more jawnz',
-                  href: '/blog/more-jawnz',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-              ],
-            },
-            {
-              text: 'About',
-              href: '/about',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-              subLinkList: [
-                {
-                  text: 'Company Mission',
-                  descriptionText: 'Learn about the company mission',
-                  href: '/about/company-mission',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-                {
-                  text: 'Beliefs',
-                  descriptionText: 'Learn about the beliefs',
-                  href: '/about/beliefs',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-                {
-                  text: 'Methodology',
-                  descriptionText: 'Learn about the methodology',
-                  href: '/about/methodology',
-                  icon: {
-                    path: '/static/icons/wireless-charging.svg',
-                    alt: 'Charging',
-                  },
-                },
-              ],
-            }
-          ],
-        },
-      ],
-    },
-    sidebarContent: {
-      buttonList: [
-        {
-          _id: 'best-technology',
-          text: 'Charging',
-          icon: {
-            path: '/static/icons/wireless-charging.svg',
-            alt: 'Wireless Charging',
-          }
-        },
-        {
-          _id: 'best-service',
-          text: 'Charging',
-          icon: {
-            path: '/static/icons/wireless-charging.svg',
-            alt: 'Wireless Charging',
-          }
-        },
-        {
-          _id: 'best-jawnz',
-          text: 'Charging',
-          icon: {
-            path: '/static/icons/wireless-charging.svg',
-            alt: 'Charging',
-          },
-        },
-      ]
-    },
-    footerContent: {
-      linkList: [
-        {
-          text: 'contact', // custom
-          modalContent: {
-            text: 'lomoulolo@gmail.com',
-          }
-        },
-        {
-          text: 'blueprint',
-          subLinkList: [
-            {
-              text: 'Terms',
-              href: '/documentation',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-            },
-            {
-              text: 'Shipping Policy',
-              href: '/documentation',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-            },
-            {
-              text: 'Privacy Policy',
-              href: '/documentation',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-            },
-          ],
-        },
-        {
-          text: 'hello',
-          subLinkList: [
-            {
-              text: 'Jawnz',
-              href: '/documentation',
-              icon: {
-                path: '/static/icons/wireless-charging.svg',
-                alt: 'Charging',
-              },
-            }
-          ]
-        }
-      ],
-    },
+    headerContent,
+    sidebarContent,
+    footerContent,
   },
   viewPanelContent: {
     panelList: [

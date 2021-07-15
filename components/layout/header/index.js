@@ -2,6 +2,8 @@
 import classNames from 'classnames';
 // hooks
 import { useStateObject } from '../../../hooks';
+// utils
+import { clickOutsideEvent } from '../../../utils';
 // elements
 import { Button, LinkButton } from '../../elements';
 
@@ -12,10 +14,14 @@ const Header = ( {
     content: {
         buttonList,
     },
+    dropdownStateName='headerDropdown',
 } ) => {
 
     /* CONTENT */
     const [ linkButton, ...subLinkButtons ] = buttonList;
+
+    /* HOOKS */
+    const [ dropdownStateObject, setDropdownStateObject ] = useStateObject( subLinkButtons.length, false, dropdownStateName );
 
     /* CLASSNAMES */
     const headerClasses = classNames( 'header-container', className );
