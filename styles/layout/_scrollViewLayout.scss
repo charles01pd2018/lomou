@@ -5,7 +5,7 @@
     background-attachment: fixed;
     background-color: $brand-blue-1;
     
-    height: 100vh;
+    min-height: -webkit-fill-available;
     max-height: 100vh;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
