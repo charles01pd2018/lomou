@@ -26,17 +26,15 @@ const Modal = ({
 
 
     return (
-        <>
-            <section id={id} className={modalContainerClasses}>
+        <section id={id} className={modalContainerClasses}>
                 <div className='modal-wrapper'>
                     <button className='modal-x-close' onClick={closeModal} type='button'>&times;</button>
                     <div className='modal-text'>
                         {text}
                     </div>
                 </div>
-            </section>
             <button ref={closeModalRef} className='modal-backdrop' onClick={closeModal} type='button' tabIndex='-1' hidden />
-        </>
+        </section>
     );
 }
 

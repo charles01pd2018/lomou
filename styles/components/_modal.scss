@@ -1,9 +1,10 @@
 .modal-container {
     position: absolute;
-    top: 35%;
+    top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    padding-top: 35vh;
 
     visibility: hidden;
     transition: transform 0.27s ease;
@@ -12,7 +13,7 @@
         visibility: visible;
         transform: scale( 1 );
 
-        +.modal-backdrop {
+        .modal-backdrop {
             position: fixed;
             display: block;  
             left: 0;
