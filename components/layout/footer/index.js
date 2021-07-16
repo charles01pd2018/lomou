@@ -22,29 +22,13 @@ const Footer = ( {
     popupStateName='isPopupActive'
 } ) => {
 
-    // // if no arguments are provided, all popups will be closed
-    // //  [ list of custom setStates ], [ list of setStateObjects ], focusedPopupName: string, stateSet: any=false
-    // const closeAllOtherPopups = ( contactPopup=false, focusedPopupName='' ) => {
-    //     if ( contactPopup ) setIsContactFormActive( false );
-
-    //     setPopupStateObject( ( state ) => {
-    //         const newPopupStateObject = {};
-    //         Object.keys( state ).forEach( ( key ) => {
-    //             if ( key === focusedPopupName ) newPopupStateObject[ key ] = state[ key ];
-    //             else newPopupStateObject[ key ] = false;
-    //         } );
-
-    //         return newPopupStateObject;
-    //     } );
-    // }
-
     /* CONTENT */
     const [ contactLink, ...genericLinkList ] = linkList;
 
     /* HOOKS */
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
-    const footerNavRef = useClickOutsideRef( ( setIsContactFormActive , setPopupStateObject ) => { closeAllPopups( 
+    const footerNavRef = useClickOutsideRef( () => { closeAllPopups( 
         [ setIsContactFormActive ],
         setPopupStateObject
      ) } );
