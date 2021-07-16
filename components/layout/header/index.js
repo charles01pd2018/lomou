@@ -1,11 +1,13 @@
 // dependencies
 import classNames from 'classnames';
 // hooks
-import { useStateObject } from '../../../hooks';
+import { useStateObject, useClickOutsideRef } from '../../../hooks';
 // utils
 import { clickOutsideEvent } from '../../../utils';
 // elements
 import { Button, LinkButton } from '../../elements';
+// partials
+import HeaderDropdown from './headerDropdown';
 
 
 const Header = ( { 

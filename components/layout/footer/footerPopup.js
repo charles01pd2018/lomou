@@ -44,7 +44,7 @@ const FooterPopup = ( {
 
     return (
         <div className='footer-popup-nav-container'>
-            <div className={footerPopupNavWrapperClasses}>
+            <nav className={footerPopupNavWrapperClasses}>
                 {
                     linkList.map( ( { text, href, icon } ) => {
                         /* CONTENT */
@@ -72,7 +72,7 @@ const FooterPopup = ( {
                         );
                     } )
                 }
-            </div>
+            </nav>
              <button className={footerTextClasses} onClick={togglerFooterPopup} type='button'>
                 {text}
             </button>
