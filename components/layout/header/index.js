@@ -3,7 +3,7 @@ import classNames from 'classnames';
 // hooks
 import { useStateObject, useClickOutsideRef } from '../../../hooks';
 // utils
-import { closeAllPopups } from '../../../utils';
+import { togglePopups } from '../../../utils';
 // elements
 import { Button, LinkButton } from '../../elements';
 // partials
@@ -25,21 +25,12 @@ const Header = ( {
     /* HOOKS */
     const [ dropdownStateObject, setDropdownStateObject ] = useStateObject( subLinkButtons.length, false, dropdownStateName );
     const headerNavRef = useClickOutsideRef( () => {
-        closeAllPopups( null, setDropdownStateObject );
+        togglePopups( null, setDropdownStateObject );
     } );
 
     /* FUNCTIONS */
-    const toggleHeaderDropdown = ( dropdownStateName ) => {
-        closeAllPopups( null, setDropdownStateObject, dropdownStateName );
-
-        setDropdownStateObject( ( state ) => {
-            const currentState = state[ dropdownStateName ];
-
-            return {
-                ...state,
-                [ dropdownStateName ]: !currentState,// this has to be put second to update the object correctly 
-            };
-        } );
+    const toggleHeaderDropdown = ( dropdownStateName ) => {        
+        togglePopups( null, setDropdownStateObject, dropdownStateName );
     }
 
     /* CLASSNAMES */

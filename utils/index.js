@@ -1,7 +1,7 @@
 import calcPagePosition from './calcPagePosition';
-import closeAllPopups from './closePopups';
+import togglePopups from './togglePopups';
 
 export {
     calcPagePosition,
-    closeAllPopups,
+    togglePopups,
 };

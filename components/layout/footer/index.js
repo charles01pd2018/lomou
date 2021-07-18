@@ -4,7 +4,7 @@ import { useState } from 'react';
 // hooks
 import { useStateObject, useClickOutsideRef } from '../../../hooks';
 // utils
-import { closeAllPopups } from '../../../utils';
+import { togglePopups } from '../../../utils';
 // components
 import Modal from '../../modal';
 // elements
@@ -29,13 +29,17 @@ const Footer = ( {
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
     const footerNavRef = useClickOutsideRef( () => { 
-        closeAllPopups( [ setIsContactFormActive ], setPopupStateObject, ) 
+        togglePopups( [ setIsContactFormActive ], setPopupStateObject, ) 
     } );
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
-        closeAllPopups( [ setIsContactFormActive ], setPopupStateObject );
+        togglePopups( null, setPopupStateObject );
         setIsContactFormActive( state => !state );
+    }
+
+    const toggleFooterPopup = ( popupStateName ) => {
+        togglePopups( null, setPopupStateObject, popupStateName );
     }
 
     /* CLASSNAMES */
@@ -66,14 +70,14 @@ const Footer = ( {
                                     linkList: subLinkList,
                                 };
 
+                                const popupStateKey = popupStateName + index;
+
                                 return (
                                     <FooterPopup key={text}
                                         footerTextClassName={footerTextClasses}
                                         content={footerPopupContent}
-                                        popupStateObject={popupStateObject}
-                                        setPopupStateObject={setPopupStateObject}
-                                        popupStateName={popupStateName + index}
-                                        closeAllPopups={closeAllPopups} />
+                                        isPopupActive={popupStateObject[ popupStateKey ]}
+                                        buttonOnClick={() => toggleFooterPopup( popupStateKey )} />
                                 );
                             } )
                         }

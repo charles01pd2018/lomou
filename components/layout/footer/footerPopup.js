@@ -11,28 +11,9 @@ const FooterPopup = ( {
         text,
         linkList
     },
-    popupStateObject,
-    setPopupStateObject,
-    popupStateName,
-    closeAllPopups,
+    isPopupActive,
+    buttonOnClick,
 } ) => {
-
-    /* CONSTANTS */
-    const isPopupActive = popupStateObject[ popupStateName ];
-
-    /* FUNCTIONS */
-    const toggleFooterPopup = () => {
-        closeAllPopups( null, setPopupStateObject, popupStateName );
-
-        setPopupStateObject( ( state ) => {
-            const currentState = state[ popupStateName ];
-
-            return {
-                ...state,
-                [ popupStateName ]: !currentState, // this has to be put second to update the object correctly 
-            }
-        } );
-    }
     
     /* CLASSNAMES */
     const isPopupActiveClasses = isPopupActive ? 'active' : 'not-active';
@@ -73,7 +54,7 @@ const FooterPopup = ( {
                     } )
                 }
             </nav>
-             <button className={footerTextClasses} onClick={toggleFooterPopup} type='button'>
+             <button className={footerTextClasses} onClick={buttonOnClick} type='button'>
                 {text}
             </button>
         </div>
