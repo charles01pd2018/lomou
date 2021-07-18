@@ -2,13 +2,14 @@
     position: absolute;
     width: 100%;
     top: 0;
-    z-index: 99;
+    z-index: 101;
 
     &.header-sticky {
         position: sticky;
     }
 
     .header-wrapper {
+        display: flex;
         justify-content: space-between;
         padding: 1rem 1.5rem;
 
@@ -16,6 +17,7 @@
             display: flex;
             flex-grow: 1;
             justify-content: flex-end;
+            align-items: center;
 
             .header-button {
                 margin-right: 3rem;
@@ -63,6 +65,24 @@
                 &:hover {
                     background-color: $purple-1;
                 }
+            }
+        }
+    }
+
+    .header-dropdown-wrapper {
+        width: 95%;
+        margin: auto;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 8px;
+
+        .header-dropdown-link-wrapper {
+            padding: 1rem;
+            border: 3px solid green;
+
+            .header-dropdown-link {
+
+                border: 2px solid blue;
             }
         }
     }

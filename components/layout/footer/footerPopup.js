@@ -21,7 +21,7 @@ const FooterPopup = ( {
     const isPopupActive = popupStateObject[ popupStateName ];
 
     /* FUNCTIONS */
-    const togglerFooterPopup = () => {
+    const toggleFooterPopup = () => {
         closeAllPopups( null, setPopupStateObject, popupStateName );
 
         setPopupStateObject( ( state ) => {
@@ -73,7 +73,7 @@ const FooterPopup = ( {
                     } )
                 }
             </nav>
-             <button className={footerTextClasses} onClick={togglerFooterPopup} type='button'>
+             <button className={footerTextClasses} onClick={toggleFooterPopup} type='button'>
                 {text}
             </button>
         </div>
