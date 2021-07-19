@@ -1,7 +1,7 @@
 import useObjectState from './object-state';
-import useClickOutsideRef from './click-outside-ref';
+import modifyRefList from './click-outside';
 
 export {
     useObjectState,
-    useClickOutsideRef,
+    modifyRefList
 }

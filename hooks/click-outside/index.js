@@ -1,17 +1,17 @@
+
 // dependencies
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 
 
-const useClickOutsideRef = ( closeFunction ) => {
-
-    /* HOOKS */
-    const ref = useRef( null );
+const modifyRefList = ( refList ) => {
 
     /* FUNCTIONS */
     const clickOutside = ( event ) => {
-        if ( !ref.current ) return;
-        if ( ref.current.contains( event.target ) ) return;
-        closeFunction();
+        refList.forEach( ( [ ref, onClick ] ) => {
+            if ( !ref.current ) return;
+            if ( ref.current.contains( event.target ) ) return;
+            onClick(); // this will only close the targetted refs
+        } );
     }
 
     useEffect( () => {
@@ -22,8 +22,6 @@ const useClickOutsideRef = ( closeFunction ) => {
             document.removeEventListener('touchstart', clickOutside );
         }
     }, [] );  
-
-    return ref;
 }
 
-export default useClickOutsideRef;
+export default modifyRefList;
