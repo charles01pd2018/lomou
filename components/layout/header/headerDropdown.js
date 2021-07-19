@@ -5,13 +5,13 @@ import { forwardRef } from 'react';
 // elements
 import { SVG } from '../../elements';
 
-const HeaderDropdown = forwardRef( ( { 
+const HeaderDropdown = ( { 
     className,
     content: {
         linkList,
     },
     isDropdownActive,
-}, ref ) => {
+} ) => {
 
     /* CLASSNAMES */
     const headerDropdownClasses = classNames( 'header-dropdown-wrapper', className );
@@ -24,7 +24,7 @@ const HeaderDropdown = forwardRef( ( {
                     const { path, alt } = icon;
 
                     return (
-                        <div key={text} ref={ref} className='header-dropdown-link-wrapper'>
+                        <div key={text} className='header-dropdown-link-wrapper'>
                             {
                                 isDropdownActive && (
                                     <Link href={href}>
@@ -40,6 +40,6 @@ const HeaderDropdown = forwardRef( ( {
             }
         </nav>
     );
-} );
+}
 
 export default HeaderDropdown;
