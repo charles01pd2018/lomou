@@ -2,7 +2,7 @@
 import { useRef, useEffect } from "react";
 
 
-const useClickOutsideRef = ( closeFunction ) => {
+const clickOutsideRef = ( closeFunction ) => {
 
     /* FUNCTIONS */
     const clickOutside = ( event ) => {
@@ -26,4 +26,4 @@ const useClickOutsideRef = ( closeFunction ) => {
     return ref;
 }
 
-export default useClickOutsideRef;
+export default clickOutsideRef;

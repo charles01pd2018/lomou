@@ -1,7 +1,7 @@
 // dependencies
 import classNames from 'classnames';
 // hooks
-import { useStateObject, useClickOutsideRef } from '../../../hooks';
+import { useStateObject, clickOutsideRef } from '../../../hooks';
 // utils
 import { togglePopups } from '../../../utils';
 // elements
@@ -24,7 +24,7 @@ const Header = ( {
 
     /* HOOKS */
     const [ dropdownStateObject, setDropdownStateObject ] = useStateObject( subLinkButtons.length, false, dropdownStateName );
-    const headerNavRef = useClickOutsideRef( () => {
+    const headerNavRef = clickOutsideRef( () => {
         togglePopups( null, setDropdownStateObject );
     } );
 

@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 // hooks
-import { useStateObject, useClickOutsideRef } from '../../../hooks';
+import { useStateObject, clickOutsideRef } from '../../../hooks';
 // utils
 import { togglePopups } from '../../../utils';
 // components
@@ -28,7 +28,7 @@ const Footer = ( {
     /* HOOKS */
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
-    const footerNavRef = useClickOutsideRef( () => { 
+    const footerNavRef = clickOutsideRef( () => { 
         togglePopups( [ setIsContactFormActive ], setPopupStateObject, ) 
     } );
 

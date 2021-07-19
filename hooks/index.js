@@ -1,7 +1,7 @@
 import useStateObject from './useStateObject';
-import useClickOutsideRef from './useClickOutsideRef';
+import clickOutsideRef from './clickOutsideRef';
 
 export {
     useStateObject,
-    useClickOutsideRef,
+    clickOutsideRef,
 }
