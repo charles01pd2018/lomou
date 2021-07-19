@@ -1,5 +1,5 @@
-import calcPagePosition from './calcPagePosition';
-import togglePopups from './togglePopups';
+import calcPagePosition from './calc-page-position';
+import togglePopups from './toggle-popups';
 
 export {
     calcPagePosition,
