@@ -27,9 +27,7 @@ const Header = ( {
     /* HOOKS */
     // const headerNavRef = useRef( null );
     const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
-    const headerNavRef = useClickOutsideRef( () => {
-        togglePopups( null, setDropdownObject );
-    } );
+    const headerNavRef = useClickOutsideRef( () => togglePopups( null, setDropdownObject ) );
 
     /* FUNCTIONS */
     const toggleHeaderDropdown = ( dropdownStateName ) => {        

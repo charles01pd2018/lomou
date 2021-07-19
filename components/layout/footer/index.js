@@ -53,6 +53,8 @@ const Footer = ( {
     //     } );
     // }, [] );
 
+    console.log( isContactFormActive );
+    
     return (
         <>
             <Modal id='footer-modal'
