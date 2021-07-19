@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import { useState } from 'react';
 // hooks
-import { useStateObject, clickOutsideRef } from '../../../hooks';
+import { useObjectState, useClickOutsideRef } from '../../../hooks';
 // utils
 import { togglePopups } from '../../../utils';
 // components
@@ -27,19 +27,19 @@ const Footer = ( {
 
     /* HOOKS */
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
-    const [ popupStateObject, setPopupStateObject ] = useStateObject( genericLinkList.length, false, popupStateName );
-    const footerNavRef = clickOutsideRef( () => { 
-        togglePopups( [ setIsContactFormActive ], setPopupStateObject, ) 
+    const [ popupObject, setPopupObject ] = useObjectState( genericLinkList.length, false, popupStateName );
+    const footerNavRef = useClickOutsideRef( () => { 
+        togglePopups( [ setIsContactFormActive ], setPopupObject, ) 
     } );
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
-        togglePopups( null, setPopupStateObject );
+        togglePopups( null, setPopupObject );
         setIsContactFormActive( state => !state );
     }
 
     const toggleFooterPopup = ( popupStateName ) => {
-        togglePopups( null, setPopupStateObject, popupStateName );
+        togglePopups( null, setPopupObject, popupStateName );
     }
 
     /* CLASSNAMES */
@@ -76,7 +76,7 @@ const Footer = ( {
                                     <FooterPopup key={text}
                                         footerTextClassName={footerTextClasses}
                                         content={footerPopupContent}
-                                        isPopupActive={popupStateObject[ popupStateKey ]}
+                                        isPopupActive={popupObject[ popupStateKey ]}
                                         buttonOnClick={() => toggleFooterPopup( popupStateKey )} />
                                 );
                             } )

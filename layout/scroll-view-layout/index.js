@@ -1,5 +1,6 @@
 // components
 import { Header, Sidebar, Footer } from '../../components/layout';
+// hooks
 
 
 const ScrollViewLayout = ( {
@@ -11,6 +12,8 @@ const ScrollViewLayout = ( {
     },
     pageState,
 } ) => {
+
+    /* HOOKS */
 
     return (
         <div className='scroll-view-layout-container'>

@@ -2,7 +2,10 @@
 import { useRef, useEffect } from "react";
 
 
-const clickOutsideRef = ( closeFunction ) => {
+const useClickOutsideRef = ( closeFunction ) => {
+
+    /* HOOKS */
+    const ref = useRef( null );
 
     /* FUNCTIONS */
     const clickOutside = ( event ) => {
@@ -10,9 +13,6 @@ const clickOutsideRef = ( closeFunction ) => {
         if ( ref.current.contains( event.target ) ) return;
         closeFunction();
     }
-    
-    /* HOOKS */
-    const ref = useRef( null );
 
     useEffect( () => {
         document.addEventListener( 'click', clickOutside );
@@ -26,4 +26,4 @@ const clickOutsideRef = ( closeFunction ) => {
     return ref;
 }
 
-export default clickOutsideRef;
+export default useClickOutsideRef;

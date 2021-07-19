@@ -1,7 +1,7 @@
 // dependencies
 import classNames from 'classnames';
 // hooks
-import { useStateObject, clickOutsideRef } from '../../../hooks';
+import { useObjectState, useClickOutsideRef } from '../../../hooks';
 // utils
 import { togglePopups } from '../../../utils';
 // elements
@@ -23,14 +23,14 @@ const Header = ( {
     const [ linkButton, ...subLinkButtons ] = buttonList;
 
     /* HOOKS */
-    const [ dropdownStateObject, setDropdownStateObject ] = useStateObject( subLinkButtons.length, false, dropdownStateName );
-    const headerNavRef = clickOutsideRef( () => {
-        togglePopups( null, setDropdownStateObject );
+    const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
+    const headerNavRef = useClickOutsideRef( () => {
+        togglePopups( null, setDropdownObject );
     } );
 
     /* FUNCTIONS */
     const toggleHeaderDropdown = ( dropdownStateName ) => {        
-        togglePopups( null, setDropdownStateObject, dropdownStateName );
+        togglePopups( null, setDropdownObject, dropdownStateName );
     }
 
     /* CLASSNAMES */
@@ -61,7 +61,7 @@ const Header = ( {
 
                         return (
                             <HeaderDropdown key={text} content={{linkList}}
-                                isDropdownActive={dropdownStateObject[ dropdownStateName + index ]} />
+                                isDropdownActive={dropdownObject[ dropdownStateName + index ]} />
                         );
                     } )
             }
