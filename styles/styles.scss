@@ -3,7 +3,8 @@
     THIS IMPORT HAS TO GO FIRST SINCE IT CONTAINS VARIABLES USED BY OTHER STYLE SHEETS
     *DO NOT CHANGE* *DO NOT CHANGE* *DO NOT CHANGE* *DO NOT CHANGE*
 --------------------------------------------------------------*/
-@import './base/spacing', './base/colors', './base/normalize';
+@import './base/spacing', './base/colors', './base/normalize',
+    './base/chromeBug';
 
 /*--------------------------------------------------------------
 # Global

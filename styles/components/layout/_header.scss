@@ -1,27 +1,48 @@
 .header-container {
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0;
-    z-index: 99;
+    z-index: 101;
 
     &.header-sticky {
         position: sticky;
     }
 
     .header-wrapper {
-        justify-content: space-between;
+        display: flex;
+        justify-content: flex-end;
         padding: 1rem 1.5rem;
 
         .header-buttons-wrapper {
-            display: flex;
-            flex-grow: 1;
-            justify-content: flex-end;
-
             .header-button {
                 margin-right: 3rem;
 
-                &:last-of-type {
-                    margin-right: 0;
+                &:hover, &.active {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+
+                &:after {
+                    position: absolute;
+                    opacity: 0;
+                    transition: opacity 0.4s ease;
+                }
+
+                &.header-link-button {
+                    &:after {
+                        content: '>';
+                    }
+                }
+
+                &.header-sublink-button {
+                    &:last-of-type {
+                        margin-right: 2rem;
+                    }
+
+                    &:after {
+                        content: '^';
+                    }
                 }
             }
 
@@ -39,6 +60,26 @@
                 &:hover {
                     background-color: $purple-1;
                 }
+            }
+        }
+    }
+
+    .header-dropdown-wrapper {
+        width: 95%;
+        margin: auto;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 8px;
+        
+        border: 5px solid black;
+
+        .header-dropdown-link-wrapper {
+            padding: 1rem;
+            border: 3px solid green;
+
+            .header-dropdown-link {
+
+                border: 2px solid blue;
             }
         }
     }

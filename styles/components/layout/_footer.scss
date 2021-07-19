@@ -105,4 +105,16 @@
             }
         }
     }
+
+    @media ( max-width: $breakpoint--medium ) {
+        .footer-wrapper {
+            .footer-nav-wrapper {
+                .footer-popup-nav-container {
+                    .footer-popup-nav-wrapper {
+                        right: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,7 +1,7 @@
 // dependencies
 import { useState } from 'react';
 
-const useStateObject = ( length, initialState, variableName ) => {
+const useObjectState = ( length, initialState, variableName ) => {
     let stateObject = {};
     for ( let i =0; i < length; i++ ) {
         stateObject[ variableName + i ] = initialState;
@@ -10,4 +10,4 @@ const useStateObject = ( length, initialState, variableName ) => {
     return useState( stateObject );
 }
 
-export default useStateObject;
+export default useObjectState;

@@ -11,40 +11,21 @@ const FooterPopup = ( {
         text,
         linkList
     },
-    popupStateObject,
-    setPopupStateObject,
-    popupStateName,
-    closeAllOtherPopups,
+    isPopupActive,
+    buttonOnClick,
 } ) => {
-
-    /* CONSTANTS */
-    const isPopupActive = popupStateObject[ popupStateName ];
-
-    /* FUNCTIONS */
-    const togglerFooterPopup = () => {
-        closeAllOtherPopups( popupStateName );
-
-        setPopupStateObject( ( state ) => {
-            const currentState = state[ popupStateName ];
-
-            return {
-                ...state,
-                [ popupStateName ]: !currentState, // this has to be put second to update the object correctly 
-            }
-        } );
-    }
     
     /* CLASSNAMES */
-    const isPopupActiveClasses = isPopupActive ? 'active' : 'not-active item-leave';
+    const isPopupActiveClasses = isPopupActive ? 'active' : 'not-active';
     const footerPopupNavWrapperClasses = classNames( 'footer-popup-nav-wrapper',
         isPopupActiveClasses );
-    const footerTextClasses = classNames( footerTextClassName, 
+    const footerTextClasses = classNames( footerTextClassName, 'footer-generic-text',
         isPopupActiveClasses );
 
 
     return (
         <div className='footer-popup-nav-container'>
-            <div className={footerPopupNavWrapperClasses}>
+            <nav className={footerPopupNavWrapperClasses}>
                 {
                     linkList.map( ( { text, href, icon } ) => {
                         /* CONTENT */
@@ -72,8 +53,8 @@ const FooterPopup = ( {
                         );
                     } )
                 }
-            </div>
-             <button className={`${footerTextClasses} footer-generic-text`} onClick={togglerFooterPopup} type='button'>
+            </nav>
+             <button className={footerTextClasses} onClick={buttonOnClick} type='button'>
                 {text}
             </button>
         </div>

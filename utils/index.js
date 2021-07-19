@@ -1,7 +1,7 @@
-import clickOutsideEvent from './clickOutsideEvent';
-import calcPagePosition from './calcPagePosition';
+import calcPagePosition from './calc-page-position';
+import togglePopups from './toggle-popups';
 
 export {
-    clickOutsideEvent,
     calcPagePosition,
+    togglePopups,
 };
