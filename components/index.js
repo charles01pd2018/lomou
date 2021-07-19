@@ -1,7 +1,7 @@
 import ViewPanel from './view-panel';
 import Doc from './doc';
 import ProgressBar from './progress-bar';
-import ContactForm from './contactForm';
+import ContactForm from './contact-form';
 
 export {
     ViewPanel,

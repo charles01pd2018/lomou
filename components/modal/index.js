@@ -20,6 +20,8 @@ const Modal = ({
     const modalContainerClasses = classNames( 'modal-container', 
         isModalActive ? 'active' : 'not-active' );
 
+    console.log( isModalActive );
+    console.log( text );
 
     return (
         <section id={id} className={modalContainerClasses}>
