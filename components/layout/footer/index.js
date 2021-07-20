@@ -37,8 +37,8 @@ const Footer = ( {
         setIsContactFormActive( state => !state );
     }
 
-    const toggleFooterPopup = ( popupStateName ) => {
-        togglePopups( null, setPopupObject, popupStateName );
+    const toggleFooterPopup = ( popupStateKey ) => {
+        togglePopups( [ setIsContactFormActive ], setPopupObject, popupStateKey );
     }
 
     /* CLASSNAMES */

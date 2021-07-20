@@ -15,7 +15,8 @@ const HeaderDropdown = forwardRef( ( {
 }, ref ) => {
 
     /* CLASSNAMES */
-    const headerDropdownClasses = classNames( 'header-dropdown-wrapper', className );
+    const headerDropdownClasses = classNames( 'header-dropdown-wrapper', className,
+        isDropdownActive ? 'active' : 'not-active' );
 
 
     return (
@@ -26,14 +27,23 @@ const HeaderDropdown = forwardRef( ( {
                     const { path, alt } = icon;
 
                     return (
-                        <div key={text} className='header-dropdown-link-wrapper'>
+                        <div key={text}>
                             {
-                                isDropdownActive && (
-                                    <Link href={href}>
-                                        <a className='header-dropdown-link'>
-                                            {text}
-                                        </a>
-                                    </Link>
+                                 isDropdownActive && (
+                                    <div className='header-dropdown-link-wrapper'>
+                                        <Link href={href}>
+                                            <a className='header-dropdown-link'>
+                                                <SVG className='header-dropdown-link-icon'
+                                                    data={path}
+                                                    alt={alt}
+                                                    width='35'
+                                                    height='35' />
+                                                <div className='header-dropdown-link-text'>
+                                                    {text}
+                                                </div>
+                                            </a>
+                                        </Link>
+                                    </div>
                                 )
                             }
                         </div>

@@ -42,7 +42,7 @@ const FooterPopup = ( {
                                                     alt={alt}
                                                     width='30'
                                                     height='30' />
-                                                <div className='footer-link-text text-sm'>
+                                                <div className='footer-popup-link-text text-sm'>
                                                     {text}
                                                 </div>
                                             </a>

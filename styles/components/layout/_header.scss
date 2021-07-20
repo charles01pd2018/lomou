@@ -67,21 +67,34 @@
     }
 
     .header-dropdown-wrapper {
-        width: 95%;
-        margin: auto;
-        padding: 1rem;
-        background-color: white;
-        border-radius: 8px;
-        
-        border: 5px solid black;
+        display: flex;
+        flex-direction: column;
+
+        transition: transform 0.3s ease;
+
+        &.active {
+            transform: scale( 1 );
+        }
+
+        &.not-active {
+            transform: scale( 0.9 );
+        }
 
         .header-dropdown-link-wrapper {
             padding: 1rem;
-            border: 3px solid green;
+            background-color: white;
+            border: 2px solid black;
 
             .header-dropdown-link {
+                display: flex;
+                align-items: center;
 
-                border: 2px solid blue;
+                border: 2px solid red;
+
+                .header-dropdown-link-text {
+                    padding-left: 0.8rem;
+                }
+
             }
         }
     }

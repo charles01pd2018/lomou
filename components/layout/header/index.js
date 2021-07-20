@@ -29,8 +29,8 @@ const Header = ( {
     const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
 
     /* FUNCTIONS */
-    const toggleHeaderDropdown = ( dropdownStateName ) => {        
-        togglePopups( null, setDropdownObject, dropdownStateName );
+    const toggleHeaderDropdown = ( dropdownStateKey ) => {        
+        togglePopups( null, setDropdownObject, dropdownStateKey );
     }
 
     /* CLASSNAMES */
