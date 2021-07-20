@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 
-const modifyRefList = ( refList ) => {
+const addClickOutsideRef = ( refList ) => {
 
     /* FUNCTIONS */
     const clickOutside = ( event ) => {
@@ -24,4 +24,4 @@ const modifyRefList = ( refList ) => {
     }, [] );  
 }
 
-export default modifyRefList;
+export default addClickOutsideRef;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 // components
 import { Header, Sidebar, Footer } from '../../components/layout';
 // hooks
-import { modifyRefList } from '../../hooks';
+import { addClickOutsideRef } from '../../hooks';
 
 
 const ScrollViewLayout = ( {
@@ -18,7 +18,7 @@ const ScrollViewLayout = ( {
 
     /* HOOKS */
     const [ customRefList, setCustomRefList ] = useState( [] );
-    modifyRefList( customRefList );
+    addClickOutsideRef( customRefList );
 
     return (
         <div className='scroll-view-layout-container'>

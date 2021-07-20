@@ -10,8 +10,6 @@ const ProgressBar = ( {
         background: `linear-gradient( to right, ${color} ${scrollPercent}%, ${backgroundColor} 0% )`,
     }
 
-    // console.log( scrollPercent );
-
     return (
         <section id={id} className='progress-bar-container'>
             <div className='progress-bar-wrapper' style={progressBarStyles} />

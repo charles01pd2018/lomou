@@ -25,6 +25,7 @@ const Footer = ( {
 
     /* CONTENT */
     const [ contactLink, ...genericLinkList ] = linkList;
+    const { modalContent, text } = contactLink;
 
     /* HOOKS */
     const footerNavRef = useRef( null );
@@ -55,7 +56,7 @@ const Footer = ( {
     return (
         <>
             <Modal id='footer-modal'
-                content={contactLink.modalContent}
+                content={modalContent}
                 isModalActive={isContactFormActive}
                 setIsModalActive={setIsContactFormActive} />
             <footer id={id} className={footerClasses}>
@@ -64,7 +65,7 @@ const Footer = ( {
                         <div className='footer-contact-form-wrapper'>
                             <button className={`${footerTextClasses} ${isContactFormActive ? 'active' : 'not-active'} footer-custom-text`} 
                                 onClick={toggleContactForm} type='button'>
-                                {contactLink.text}
+                                {text}
                             </button>
                         </div>
 
