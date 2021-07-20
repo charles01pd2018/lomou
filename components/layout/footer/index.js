@@ -53,14 +53,15 @@ const Footer = ( {
     //     } );
     // }, [] );
 
-    console.log( isContactFormActive );
     
     return (
         <>
-            <Modal id='footer-modal'
-                content={contactLink.modalContent}
-                isModalActive={isContactFormActive}
-                setIsModalActive={setIsContactFormActive} />
+            <div ref={footerNavRef}>
+                <Modal id='footer-modal'
+                    content={contactLink.modalContent}
+                    isModalActive={isContactFormActive}
+                    setIsModalActive={setIsContactFormActive} />
+            </div>
             <footer id={id} className={footerClasses}>
                 <div className='footer-wrapper'>
                     <nav ref={footerNavRef} className='footer-nav-wrapper'>
