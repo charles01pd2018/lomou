@@ -29,8 +29,8 @@ const Header = ( {
     const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
 
     /* FUNCTIONS */
-    const toggleHeaderDropdown = ( dropdownStateName ) => {        
-        togglePopups( null, setDropdownObject, dropdownStateName );
+    const toggleHeaderDropdown = ( dropdownStateKey ) => {        
+        togglePopups( null, setDropdownObject, dropdownStateKey );
     }
 
     /* CLASSNAMES */
@@ -44,11 +44,12 @@ const Header = ( {
         } );
     }, [] );
 
+    console.log( headerNavRef );
 
     return (
         <header id={id} className={headerClasses}>
             <div className='header-wrapper'>
-                <nav ref={headerNavRef} className='header-buttons-wrapper'>
+                <nav  className='header-buttons-wrapper'>
                     <LinkButton className={`${headerButtonClasses} header-link-button header-button--${linkButton.text}`} 
                         content={linkButton} />
                     {
@@ -68,8 +69,11 @@ const Header = ( {
                         const { text } = linkList[ index ];
 
                         return (
-                            <HeaderDropdown key={text} content={{linkList}} ref={headerNavRef}
-                                isDropdownActive={dropdownObject[ dropdownStateName + index ]} />
+                            <HeaderDropdown key={text} content={{linkList}}
+                                isDropdownActive={dropdownObject[ dropdownStateName + index ]}
+                                setCustomRefList={setCustomRefList}
+                                setDropdownObject={setDropdownObject}
+                                ref={headerNavRef} />
                         );
                     } )
             }
