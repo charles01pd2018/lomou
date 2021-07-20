@@ -1,6 +1,6 @@
 // dependencies
 import classNames from 'classnames';
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 // hooks
 import { useObjectState, useClickOutsideRef } from '../../../hooks';
 // utils
@@ -19,7 +19,6 @@ const Footer = ( {
     content: {
         linkList, // 0 -> custom contact form, ...rest -> generic link popups
     },
-    setCustomRefList,
     popupStateName='isPopupActive',
 } ) => {
 
@@ -27,7 +26,6 @@ const Footer = ( {
     const [ contactLink, ...genericLinkList ] = linkList;
 
     /* HOOKS */
-    // const footerNavRef = useRef( null );
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupObject, setPopupObject ] = useObjectState( genericLinkList.length, false, popupStateName );
     const footerNavRef = useClickOutsideRef( () => togglePopups( null, setPopupObject ) );
@@ -45,13 +43,6 @@ const Footer = ( {
     /* CLASSNAMES */
     const footerClasses = classNames( 'footer-container', className );
     const footerTextClasses = classNames( 'footer-text text-sm' ); 
-
-    // useEffect( () => {
-    //     setCustomRefList( ( state ) => {
-    //         state.push( [ footerNavRef, () => togglePopups( null, setPopupObject ) ] );
-    //         return state;
-    //     } );
-    // }, [] );
 
     
     return (
@@ -81,11 +72,11 @@ const Footer = ( {
                                 const popupStateKey = popupStateName + index;
 
                                 return (
-                                        <FooterPopup key={text}
-                                            footerTextClassName={footerTextClasses}
-                                            content={footerPopupContent}
-                                            isPopupActive={popupObject[ popupStateKey ]}
-                                            buttonOnClick={() => toggleFooterPopup( popupStateKey )} />
+                                    <FooterPopup key={text}
+                                        footerTextClassName={footerTextClasses}
+                                        content={footerPopupContent}
+                                        isPopupActive={popupObject[ popupStateKey ]}
+                                        buttonOnClick={() => toggleFooterPopup( popupStateKey )} />
                                 );
                             } )
                         }

@@ -1,6 +1,6 @@
 // dependencies
 import classNames from 'classnames';
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 // hooks
 import { useObjectState, useClickOutsideRef } from '../../../hooks';
 // utils
@@ -17,7 +17,6 @@ const Header = ( {
     content: {
         buttonList,
     },
-    setCustomRefList,
     dropdownStateName='headerDropdown',
 } ) => {
 
@@ -26,6 +25,7 @@ const Header = ( {
 
     /* HOOKS */
     const headerNavRef = useRef( null );
+    const headerDropdownRef = useRef( null );
     const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
 
     /* FUNCTIONS */
@@ -37,14 +37,9 @@ const Header = ( {
     const headerClasses = classNames( 'header-container', className );
     const headerButtonClasses = classNames( 'header-button button-lg' );
 
-    // useEffect( () => {
-    //     setCustomRefList( ( state ) => {
-    //         state.push( [ headerNavRef, () => togglePopups( null, setDropdownObject ) ] );
-    //         return state;
-    //     } );
-    // }, [] );
-
-
+    
+    useClickOutsideRef( () => togglePopups( null, setDropdownObject ), 
+        [ headerNavRef, headerDropdownRef ] );
 
     return (
         <header id={id} className={headerClasses}>
@@ -71,8 +66,7 @@ const Header = ( {
                         return (
                             <HeaderDropdown key={text} content={{linkList}}
                                 isDropdownActive={dropdownObject[ dropdownStateName + index ]} 
-                                setDropdownObject={setDropdownObject}
-                                ref={headerNavRef} />
+                                ref={headerDropdownRef} />
                         );
                     } )
             }
