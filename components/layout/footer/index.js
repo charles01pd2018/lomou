@@ -30,7 +30,7 @@ const Footer = ( {
     // const footerNavRef = useRef( null );
     const [ isContactFormActive, setIsContactFormActive ] = useState( false );
     const [ popupObject, setPopupObject ] = useObjectState( genericLinkList.length, false, popupStateName );
-    const footerNavRef = useClickOutsideRef( () => togglePopups( [ setIsContactFormActive ], setPopupObject ) );
+    const footerNavRef = useClickOutsideRef( () => togglePopups( null, setPopupObject ) );
 
     /* FUNCTIONS */
     const toggleContactForm = () => {
@@ -56,12 +56,10 @@ const Footer = ( {
     
     return (
         <>
-            <div ref={footerNavRef}>
-                <Modal id='footer-modal'
-                    content={contactLink.modalContent}
-                    isModalActive={isContactFormActive}
-                    setIsModalActive={setIsContactFormActive} />
-            </div>
+            <Modal id='footer-modal'
+                content={contactLink.modalContent}
+                isModalActive={isContactFormActive}
+                setIsModalActive={setIsContactFormActive} />
             <footer id={id} className={footerClasses}>
                 <div className='footer-wrapper'>
                     <nav ref={footerNavRef} className='footer-nav-wrapper'>

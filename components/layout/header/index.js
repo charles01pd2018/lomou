@@ -25,9 +25,8 @@ const Header = ( {
     const [ linkButton, ...subLinkButtons ] = buttonList;
 
     /* HOOKS */
-    // const headerNavRef = useRef( null );
+    const headerNavRef = useRef( null );
     const [ dropdownObject, setDropdownObject ] = useObjectState( subLinkButtons.length, false, dropdownStateName );
-    const headerNavRef = useClickOutsideRef( () => togglePopups( null, setDropdownObject ) );
 
     /* FUNCTIONS */
     const toggleHeaderDropdown = ( dropdownStateName ) => {        
@@ -44,6 +43,7 @@ const Header = ( {
     //         return state;
     //     } );
     // }, [] );
+
 
 
     return (
@@ -70,7 +70,9 @@ const Header = ( {
 
                         return (
                             <HeaderDropdown key={text} content={{linkList}}
-                                isDropdownActive={dropdownObject[ dropdownStateName + index ]} />
+                                isDropdownActive={dropdownObject[ dropdownStateName + index ]} 
+                                setDropdownObject={setDropdownObject}
+                                ref={headerNavRef} />
                         );
                     } )
             }

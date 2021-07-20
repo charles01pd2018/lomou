@@ -3,16 +3,30 @@
 import { useEffect, useRef } from "react";
 
 
-const useClickOutsideRef = ( onClick ) => {
+const useClickOutsideRef = ( onClick, refList ) => {
 
-    /* HOOKS */
-    const ref = useRef( null );
-    
-    /* FUNCTIONS */
-    const clickOutside = ( event ) => {
-        if ( !ref.current ) return;
-        if ( ref.current.contains( event.target ) ) return;
-        onClick(); // this will only close the targetted refs
+    let ref;
+    let clickOutside;
+
+    if ( !refList ) {
+        /* HOOKS */
+        ref = useRef( null );
+        
+        /* FUNCTIONS */
+        clickOutside = ( event ) => {
+            if ( !ref.current ) return;
+            if ( ref.current.contains( event.target ) ) return;
+            onClick();
+        }
+    } else {
+        clickOutside = ( event ) => {
+            let isFocused;
+            for ( const ref of refList ) {
+                if ( !ref.current ) isFocused = true;
+                if ( ref.current.contains( event.target ) ) isFocused = true;
+            }
+            if ( !isFocused ) onClick()
+        }   
     }
 
     useEffect( () => {
