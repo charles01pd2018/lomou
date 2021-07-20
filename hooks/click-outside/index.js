@@ -1,17 +1,30 @@
 
 // dependencies
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 
-const addClickOutsideRef = ( refList ) => {
+const useClickOutsideRef = ( onClick, refList ) => {
 
-    /* FUNCTIONS */
-    const clickOutside = ( event ) => {
-        refList.forEach( ( [ ref, onClick ] ) => {
+    let ref;
+    let clickOutside;
+
+    if ( !refList ) {
+        ref = useRef( null );
+        
+        clickOutside = ( event ) => {
             if ( !ref.current ) return;
             if ( ref.current.contains( event.target ) ) return;
-            onClick(); // this will only close the targetted refs
-        } );
+            onClick();
+        }
+    } else {
+        clickOutside = ( event ) => {
+            let isFocused;
+            for ( const ref of refList ) {
+                if ( !ref.current ) isFocused = true;
+                if ( ref.current.contains( event.target ) ) isFocused = true;
+            }
+            if ( !isFocused ) onClick()
+        }   
     }
 
     useEffect( () => {
@@ -22,6 +35,8 @@ const addClickOutsideRef = ( refList ) => {
             document.removeEventListener('touchstart', clickOutside );
         }
     }, [] );  
+
+    return ref;
 }
 
-export default addClickOutsideRef;
+export default useClickOutsideRef;

@@ -1,25 +1,22 @@
 // components
-import { Header, Sidebar, Footer } from '../../components/layout';
+import { Header, Footer } from '../../components/layout';
 
 
 const ScrollViewLayout = ( {
     children,
     content: {
         headerContent,
-        sidebarContent,
         footerContent,
     },
-    pageState,
 } ) => {
 
     return (
-        <div className='scroll-view-layout-container'>
+        <div className='page-layout-container brand-layout'>
             <Header id='main-header' content={headerContent} />
-            <Sidebar id='main-sidebar' content={sidebarContent} pageState={pageState} />
             <div className='container'>
                 <main className='site-content'>{children}</main>
             </div>
-            <Footer id='main-footer' content={footerContent} />
+            <Footer id='main-footer' content={footerContent} className='footer-static' />
         </div>
     );
 }

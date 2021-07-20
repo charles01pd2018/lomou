@@ -1,40 +1,25 @@
 // dependencies
 import classNames from 'classnames';
 import Link from 'next/link';
-import { forwardRef, useRef, useEffect } from 'react';
-// utils
-import { togglePopups } from '../../../utils';
+import { forwardRef } from 'react';
 // elements
 import { SVG } from '../../elements';
 
 
-const HeaderDropdown =  forwardRef( ( { 
+const HeaderDropdown = forwardRef( ( { 
     className,
     content: {
         linkList,
     },
     isDropdownActive,
-    setCustomRefList,
-    setDropdownObject,
 }, ref ) => {
-
-    /* HOOKS */
-    const headerDropdownRef = useRef( null );
 
     /* CLASSNAMES */
     const headerDropdownClasses = classNames( 'header-dropdown-wrapper', className );
 
-    useEffect( () => {
-        setCustomRefList( ( state ) => {
-            state.push( [ headerDropdownRef, () => togglePopups( null, setDropdownObject ) ] );
-            return state;
-        } );
-    }, [] );
-
-    console.log( headerDropdownRef );
 
     return (
-        <nav ref={headerDropdownRef} className={headerDropdownClasses}>
+        <nav ref={ref} className={headerDropdownClasses}>
             {
                 linkList.map( ( { text, href, icon } ) => {
                     /* CONTENT */
