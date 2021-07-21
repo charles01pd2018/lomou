@@ -14,11 +14,12 @@ const LinkButton = ( {
     /* CLASSNAMES */
     const linkButtonClasses = classNames( 'link-button-wrapper', className );
 
+    // this feels really weird - look into this later
     return (
         <Link href={href}>
-            <a className={linkButtonClasses}>
-                {text}
-            </a>
+            <button className={linkButtonClasses}>
+                <a>{text}</a>
+            </button>
         </Link>
     );
 }

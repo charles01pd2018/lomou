@@ -14,8 +14,6 @@
         padding: 1rem 1.5rem;
 
         .header-buttons-wrapper {
-            border: 5px solid black;
-            
             .header-button {
                 margin-right: 3rem;
 
@@ -28,12 +26,13 @@
                 &:after {
                     position: absolute;
                     opacity: 0;
-                    transition: opacity 0.4s ease;
+                    
+                    transition: opacity 0.3s ease;
                 }
 
                 &.header-link-button {
                     &:after {
-                        content: '>';
+                        content: '*';
                     }
                 }
 
@@ -51,7 +50,7 @@
             .header-button--Shop {
                 border: 5px solid $green-4;
 
-                &:hover {
+                &:hover, &.active {
                     background-color: $green-2;
                 }
             }
@@ -59,7 +58,7 @@
             .header-button--Explore {
                 border: 5px solid $purple-4;
 
-                &:hover {
+                &:hover, &.active {
                     background-color: $purple-1;
                 }
             }

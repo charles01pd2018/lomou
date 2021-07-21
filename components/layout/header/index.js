@@ -48,10 +48,15 @@ const Header = ( {
                         content={linkButton} />
                     {
                         subLinkButtons.map( ( { text }, index ) => {
+                            /* CONTENT */
+                            const dropdownStateKey = dropdownStateName + index;
+                            /* CLASSNAMES */
+                            const sublinkButtonClasses = classNames( `header-sublink-button header-button--${text}`, 
+                                headerButtonClasses, dropdownObject[ dropdownStateKey ] ? 'active' : 'not-active' );
 
                             return (
-                                <Button key={text} className={`${headerButtonClasses} header-sublink-button header-button--${text}`}
-                                    content={{text}} onClick={() => toggleHeaderDropdown( dropdownStateName + index )} />
+                                <Button key={text} className={sublinkButtonClasses} content={{text}} 
+                                    onClick={() => toggleHeaderDropdown( dropdownStateKey )} />
                             );
                         } )
                     }
