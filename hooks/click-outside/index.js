@@ -30,11 +30,11 @@ const useClickOutsideRef = ( onClick, refList ) => {
     }
 
     useEffect( () => {
-        document.addEventListener( 'click', clickOutside );
-        document.addEventListener('mousedown', clickOutside );
+        document.addEventListener( 'mousedown', clickOutside );
+        document.addEventListener( 'touchstart', clickOutside );
         return () => {
-            document.removeEventListener( 'click', clickOutside );
-            document.removeEventListener('touchstart', clickOutside );
+            document.removeEventListener( 'mousedown', clickOutside );
+            document.removeEventListener( 'touchstart', clickOutside );
         }
     }, [] );  
 
