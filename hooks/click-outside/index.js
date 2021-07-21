@@ -20,6 +20,8 @@ const useClickOutsideRef = ( onClick, refList ) => {
         clickOutside = ( event ) => {
             let isFocused;
             for ( const ref of refList ) {
+                // when you navigate to a new page, for some reason a nullish ref gets added to the beginning of the refList
+                if ( !ref.current ) continue;
                 if ( !ref.current ) isFocused = true;
                 if ( ref.current.contains( event.target ) ) isFocused = true;
             }

@@ -37,7 +37,6 @@ const Header = ( {
     const headerClasses = classNames( 'header-container', className );
     const headerButtonClasses = classNames( 'header-button button-lg' );
 
-    
     useClickOutsideRef( () => togglePopups( null, setDropdownObject ), 
         [ headerNavRef, headerDropdownRef ] );
 
@@ -65,7 +64,7 @@ const Header = ( {
 
                         return (
                             <HeaderDropdown key={text} content={{linkList}}
-                                isDropdownActive={dropdownObject[ dropdownStateName + index ]} 
+                                isDropdownActive={dropdownObject[ dropdownStateName + index ]}
                                 ref={headerDropdownRef} />
                         );
                     } )
