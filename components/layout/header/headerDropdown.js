@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { forwardRef } from 'react';
 // elements
 import { SVG } from '../../elements';
+// partials
+import HeaderSubLinks from './headerSublinks';
 
 
 const HeaderDropdown = forwardRef( ( { 
@@ -22,7 +24,7 @@ const HeaderDropdown = forwardRef( ( {
     return (
         <nav ref={ref} className={headerDropdownClasses}>
             {
-                linkList.map( ( { text, href, icon } ) => {
+                linkList.map( ( { text, href, icon, subLinkList } ) => {
                     /* CONTENT */
                     const { path, alt } = icon;
 
@@ -32,17 +34,18 @@ const HeaderDropdown = forwardRef( ( {
                                  isDropdownActive && (
                                     <div className='header-dropdown-link-wrapper'>
                                         <Link href={href}>
-                                            <a className='header-dropdown-link'>
-                                                <SVG className='header-dropdown-link-icon'
+                                            <a className='header-dropdown-main-link'>
+                                                <SVG className='header-dropdown-main-link-icon'
                                                     data={path}
                                                     alt={alt}
                                                     width='35'
                                                     height='35' />
-                                                <div className='header-dropdown-link-text'>
+                                                <div className='header-dropdown-main-link-text text-norm'>
                                                     {text}
                                                 </div>
                                             </a>
                                         </Link>
+                                        <HeaderSubLinks content={{subLinkList}} />
                                     </div>
                                 )
                             }
